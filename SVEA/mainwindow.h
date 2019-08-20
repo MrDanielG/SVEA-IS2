@@ -15,6 +15,11 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_actionAdministrador_triggered();
+
+    void on_actionCrear_eleccion_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

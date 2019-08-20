@@ -17,7 +17,7 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
-      <widget class="QWidget" name="page">
+      <widget class="QWidget" name="page_login">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -161,6 +161,37 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="page_a1">
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>20</y>
+          <width>191</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Información administrador</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_a2">
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>20</y>
+          <width>47</width>
+          <height>13</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Crear elección</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page"/>
       <widget class="QWidget" name="page_2"/>
      </widget>
     </item>
@@ -214,10 +245,54 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionAdministrador"/>
+   <addaction name="actionCrear_eleccion"/>
+   <addaction name="actionGenerarUsuarios"/>
+   <addaction name="actionValidar_propuestas"/>
+   <addaction name="actionCerrar_sesion"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_Votante">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>true</bool>
+   </attribute>
   </widget>
   <action name="actionAdministrador">
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Administrador</string>
+   </property>
+  </action>
+  <action name="actionCrear_eleccion">
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Crear elección</string>
+   </property>
+  </action>
+  <action name="actionGenerarUsuarios">
+   <property name="text">
+    <string>Generar usuarios</string>
+   </property>
+  </action>
+  <action name="actionValidar_propuestas">
+   <property name="text">
+    <string>Validar propuestas</string>
+   </property>
+  </action>
+  <action name="actionCerrar_sesion">
+   <property name="text">
+    <string>Cerrar sesión</string>
    </property>
   </action>
  </widget>
