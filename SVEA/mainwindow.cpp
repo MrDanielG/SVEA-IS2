@@ -156,15 +156,29 @@ void MainWindow::on_pushButton_ingresar_clicked()
             ui->toolBar_Admin->setVisible(true);
         }
 
-        query.exec("SELECT contra_usuario FROM usuario WHERE id_tipo_usuario = 1 ");
+        query.exec("SELECT * FROM usuario WHERE id_tipo_usuario = 1 ");
         query.next();
         dbAdminContra = query.value(0).toString();
         qDebug()<<dbAdminContra;
         query.finish();
 
-        //Ui Votante
-        //if(login_usuario == );
+        query.exec("SELECT * FROM `usuario` WHERE id_usuario = "+login_usuario+" and contra_usuario = '"+login_contra+"' and id_tipo_usuario = 2");
+        query.next();
+        QString validaPartido = query.value(2).toString();
+        qDebug()<<validaPartido;
+        if(!validaPartido.isEmpty()){
+            //Ui Partido
+            qDebug()<<"UI PARTIDO";
+        }
 
+        query.exec("SELECT * FROM `usuario` WHERE id_usuario = "+login_usuario+" and contra_usuario = '"+login_contra+"' and id_tipo_usuario = 3");
+        query.next();
+        QString validaVotante = query.value(2).toString();
+        qDebug()<<validaVotante;
+        if(!validaVotante.isEmpty()){
+            //Ui Votante
+            qDebug()<<"UI VOTANTE";
+        }
 
     }
 }
