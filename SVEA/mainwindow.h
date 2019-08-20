@@ -13,6 +13,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+    void cambiarStacked(int indice);
     ~MainWindow();
 
 private slots:

@@ -6,14 +6,24 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->stackedWidget->setCurrentIndex(5);
-    //ui->label_contrasena->setText("aiuda");
+    cambiarStacked(8);
+
+}
+
+void MainWindow::cambiarStacked(int indice)
+{//Para utilizar en el login más fácilmente
+    ui->stackedWidget->setCurrentIndex(indice);
+
 
     if(ui->stackedWidget->currentIndex()==0||ui->stackedWidget->currentIndex()>5){
        ui->toolBar_Admin->setVisible(false);
     }
-
-    qDebug() << "Daniel";
+    if(ui->stackedWidget->currentIndex()<9){
+        ui->toolBar_Partido->setVisible(false);
+    }
+    if(ui->stackedWidget->currentIndex()<6||ui->stackedWidget->currentIndex()>8){
+        ui->toolBar_Votante->setVisible(false);
+    }
 }
 
 MainWindow::~MainWindow()
