@@ -49,6 +49,8 @@ private slots:
 
     void on_actionCerrar_sesion_3_triggered();
 
+    void on_pushButton_ingresar_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");

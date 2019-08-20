@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "QDebug"
 #include "QMessageBox"
-
+#include "QString"
 #include <QTranslator>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -120,4 +120,34 @@ void MainWindow::on_actionCerrar_sesion_3_triggered()
 {
     ui->stackedWidget->setCurrentIndex(0);
     ui->toolBar_Votante->setVisible(false);
+}
+
+void MainWindow::on_pushButton_ingresar_clicked()
+{
+    qDebug()<<"asdf";
+
+    //QSqlDatabase mDatabase = QSqlDatabase::database("ConexionPrincipal");
+
+    if(!db.isOpen()){
+        qDebug() <<"Error en la conexion";
+        return;
+    }
+    else {
+        //Aqui todo el pinshi codigo
+        QString usuarioID = ui->lineEdit_usuario->text();
+        QString usuarioContra = ui->lineEdit_contrasena->text();
+
+        qDebug()<<usuarioID;
+        qDebug()<<usuarioContra;
+
+        QString dbUsuario;
+        QString dbContra;
+
+        QSqlQuery queryFile(db);
+        queryFile.exec("SELECT contra_usuario FROM usuario WHERE id_usuario = 1");
+        dbContra = queryFile.value(1).toString();
+        qDebug()<<dbContra;
+
+    }
+
 }

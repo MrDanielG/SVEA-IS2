@@ -6,3 +6,9 @@ build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/Makefile.Release
 build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/Makefile
 build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/Makefile.Debug
 build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/Makefile.Release
+build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/debug/mainwindow.o
+build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/ui_mainwindow.h
+build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/Makefile.Release
+build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/Makefile.Debug
+build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/Makefile
+build-SVEA-Desktop_Qt_5_11_2_MinGW_32bit-Debug/debug/SVEA.exe
