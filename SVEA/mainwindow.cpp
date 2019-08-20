@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     //db.setDatabaseName("DRIVER={MySQL ODBC 8.0 Unicode Driver};Server=localhost;uid=root;Database=db_svea;");
-
+    cambiarStacked(0);
     db.setDatabaseName("qtSVEA");
 
     if(!db.open()){
@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     else{
 
     }
-    cambiarStacked(1);
+
 
 }
 
@@ -106,15 +106,10 @@ void MainWindow::on_actionPartido_triggered()
     ui->actionAdministrador->setCheckable(true);
 }
 
-void MainWindow::on_actionRegistrar_candidatos_triggered()
-{
-    ui->stackedWidget->setCurrentIndex(9);
-    ui->actionAdministrador->setCheckable(true);
-}
 
 void MainWindow::on_actionCrear_propuesta_triggered()
 {
-    ui->stackedWidget->setCurrentIndex(10);
+    ui->stackedWidget->setCurrentIndex(9);
     ui->actionAdministrador->setCheckable(true);
 }
 
@@ -159,6 +154,8 @@ void MainWindow::on_pushButton_ingresar_clicked()
 
         if(login_usuario == dbAdminUsuario && login_contra == dbAdminContra){
             //Mostrar UI Usuario
+            cambiarStacked(1);
+            ui->toolBar_Admin->setVisible(true);
         }
 
     }

@@ -43,8 +43,6 @@ private slots:
 
     void on_actionPartido_triggered();
 
-    void on_actionRegistrar_candidatos_triggered();
-
     void on_actionCrear_propuesta_triggered();
 
     void on_actionCerrar_sesion_3_triggered();
