@@ -58,6 +58,54 @@ void MainWindow::on_actionValidar_propuestas_triggered()
 
 void MainWindow::on_actionCerrar_sesion_triggered()
 {
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->toolBar_Admin->setVisible(false);
+}
+
+void MainWindow::on_actionVotante_triggered()
+{
     ui->stackedWidget->setCurrentIndex(5);
     ui->actionAdministrador->setCheckable(true);
+}
+
+void MainWindow::on_actionPropuestas_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(6);
+    ui->actionAdministrador->setCheckable(true);
+}
+
+void MainWindow::on_actionVotar_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(7);
+    ui->actionAdministrador->setCheckable(true);
+}
+
+void MainWindow::on_actionCerrar_sesion_2_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->toolBar_Votante->setVisible(false);
+}
+
+void MainWindow::on_actionPartido_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(8);
+    ui->actionAdministrador->setCheckable(true);
+}
+
+void MainWindow::on_actionRegistrar_candidatos_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(9);
+    ui->actionAdministrador->setCheckable(true);
+}
+
+void MainWindow::on_actionCrear_propuesta_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(10);
+    ui->actionAdministrador->setCheckable(true);
+}
+
+void MainWindow::on_actionCerrar_sesion_3_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->toolBar_Votante->setVisible(false);
 }
