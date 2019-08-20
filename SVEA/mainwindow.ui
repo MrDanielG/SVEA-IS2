@@ -182,7 +182,7 @@ QAction{
         <item>
          <layout class="QGridLayout" name="gridLayout">
           <item row="1" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="label_titulo1">
             <property name="font">
              <font>
               <family>Bahnschrift</family>
@@ -195,7 +195,7 @@ QAction{
            </widget>
           </item>
           <item row="4" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="imagenAdmin">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -252,7 +252,7 @@ QAction{
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="label_usuarioA">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -264,7 +264,7 @@ QAction{
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_6">
+             <widget class="QLabel" name="usuario_admin">
               <property name="text">
                <string>admin</string>
               </property>
@@ -304,7 +304,7 @@ QAction{
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="label_correoA">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -316,7 +316,7 @@ QAction{
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_7">
+             <widget class="QLabel" name="correo_admin">
               <property name="text">
                <string>admin@dominio.com</string>
               </property>
@@ -345,32 +345,6 @@ QAction{
        <layout class="QHBoxLayout" name="horizontalLayout_17">
         <item>
          <layout class="QGridLayout" name="gridLayout_4">
-          <item row="9" column="0">
-           <spacer name="verticalSpacer_11">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="1" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_2">
-            <property name="font">
-             <font>
-              <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Proceso electoral</string>
-            </property>
-           </widget>
-          </item>
           <item row="3" column="0">
            <spacer name="verticalSpacer_10">
             <property name="orientation">
@@ -384,11 +358,31 @@ QAction{
             </property>
            </spacer>
           </item>
+          <item row="1" column="0" alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="label_titulo2">
+            <property name="font">
+             <font>
+              <family>Bahnschrift</family>
+              <pointsize>24</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Proceso electoral</string>
+            </property>
+           </widget>
+          </item>
           <item row="5" column="0">
            <layout class="QGridLayout" name="gridLayout_5">
             <property name="topMargin">
              <number>20</number>
             </property>
+            <item row="1" column="3">
+             <widget class="QLabel" name="label_fip">
+              <property name="text">
+               <string>Fecha inicio</string>
+              </property>
+             </widget>
+            </item>
             <item row="1" column="0">
              <spacer name="horizontalSpacer_22">
               <property name="orientation">
@@ -403,50 +397,16 @@ QAction{
              </spacer>
             </item>
             <item row="2" column="4">
-             <widget class="QTimeEdit" name="timeEdit"/>
+             <widget class="QTimeEdit" name="horaInicioVotacion"/>
             </item>
             <item row="1" column="4">
-             <widget class="QDateEdit" name="dateEdit_3"/>
+             <widget class="QDateEdit" name="fechaInicioPresentacion"/>
             </item>
-            <item row="2" column="5">
-             <widget class="QDateEdit" name="dateEdit_5"/>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLabel" name="label_29">
-              <property name="font">
-               <font>
-                <pointsize>13</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Presentación de propuestas</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLabel" name="label_30">
-              <property name="font">
-               <font>
-                <pointsize>13</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Votación</string>
-              </property>
-             </widget>
+            <item row="2" column="6">
+             <widget class="QDateEdit" name="fechaVotacion"/>
             </item>
             <item row="1" column="6">
-             <spacer name="horizontalSpacer_23">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
+             <widget class="QDateEdit" name="fechaFinPresentacion"/>
             </item>
             <item row="1" column="2">
              <spacer name="horizontalSpacer_21">
@@ -461,14 +421,48 @@ QAction{
               </property>
              </spacer>
             </item>
-            <item row="1" column="5">
-             <widget class="QDateEdit" name="dateEdit_4"/>
+            <item row="2" column="1">
+             <widget class="QLabel" name="label_votacion">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Votación</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="7">
+             <spacer name="horizontalSpacer_23">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_presentacion">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Presentación de propuestas</string>
+              </property>
+             </widget>
             </item>
             <item row="3" column="4">
-             <widget class="QTimeEdit" name="timeEdit_2"/>
+             <widget class="QTimeEdit" name="horaFinVotacion"/>
             </item>
             <item row="0" column="1">
-             <widget class="QLabel" name="label_26">
+             <widget class="QLabel" name="label_registro">
               <property name="font">
                <font>
                 <pointsize>13</pointsize>
@@ -480,29 +474,57 @@ QAction{
              </widget>
             </item>
             <item row="0" column="4">
-             <widget class="QDateEdit" name="dateEdit"/>
+             <widget class="QDateEdit" name="fechaInicioRegistro"/>
             </item>
-            <item row="0" column="5">
-             <widget class="QDateEdit" name="dateEdit_2"/>
+            <item row="0" column="6">
+             <widget class="QDateEdit" name="fechaFinRegistro"/>
             </item>
             <item row="2" column="3">
-             <widget class="QLabel" name="label_31">
+             <widget class="QLabel" name="label_horaInicio">
               <property name="text">
                <string>Hora inicio</string>
               </property>
              </widget>
             </item>
             <item row="3" column="3">
-             <widget class="QLabel" name="label_32">
+             <widget class="QLabel" name="label_horaFin">
               <property name="text">
                <string>Hora fin</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QLabel" name="label_hir">
+              <property name="text">
+               <string>Fecha inicio</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="5">
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Fecha fin</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="5">
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Fecha fin</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="5">
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Fecha</string>
               </property>
              </widget>
             </item>
            </layout>
           </item>
           <item row="7" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="pushButton_crearEleccion">
             <property name="minimumSize">
              <size>
               <width>200</width>
@@ -519,58 +541,6 @@ QAction{
              <string>Crear elección</string>
             </property>
            </widget>
-          </item>
-          <item row="4" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_15">
-            <property name="topMargin">
-             <number>20</number>
-            </property>
-            <item>
-             <spacer name="horizontalSpacer_19">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_27">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Nombre de elección:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_28">
-              <property name="text">
-               <string>e</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_20">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
           </item>
           <item row="8" column="0">
            <spacer name="verticalSpacer_12">
@@ -598,6 +568,58 @@ QAction{
             </property>
            </spacer>
           </item>
+          <item row="4" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <spacer name="horizontalSpacer_19">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_nombreE">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Nombre de elección:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="nombreEleccion">
+              <property name="text">
+               <string>e</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_20">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
          </layout>
         </item>
        </layout>
@@ -606,21 +628,8 @@ QAction{
        <layout class="QHBoxLayout" name="horizontalLayout_16">
         <item>
          <layout class="QGridLayout" name="gridLayout_6">
-          <item row="1" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_33">
-            <property name="font">
-             <font>
-              <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Generar usuarios</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="0">
-           <spacer name="verticalSpacer_14">
+          <item row="5" column="0">
+           <spacer name="verticalSpacer_17">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -645,19 +654,6 @@ QAction{
             </property>
            </spacer>
           </item>
-          <item row="5" column="0">
-           <spacer name="verticalSpacer_17">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="8" column="0">
            <spacer name="verticalSpacer_16">
             <property name="orientation">
@@ -671,8 +667,21 @@ QAction{
             </property>
            </spacer>
           </item>
+          <item row="1" column="0" alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="label_33">
+            <property name="font">
+             <font>
+              <family>Bahnschrift</family>
+              <pointsize>24</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Generar usuarios</string>
+            </property>
+           </widget>
+          </item>
           <item row="6" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="pushButton_generarUsuarios">
             <property name="minimumSize">
              <size>
               <width>200</width>
@@ -696,10 +705,10 @@ QAction{
              <number>20</number>
             </property>
             <item>
-             <widget class="QTableView" name="tableView_2"/>
+             <widget class="QTableView" name="tableView_votantes"/>
             </item>
             <item>
-             <widget class="QTableView" name="tableView"/>
+             <widget class="QTableView" name="tableView_partidos"/>
             </item>
            </layout>
           </item>
@@ -884,7 +893,7 @@ QAction{
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_11">
+             <widget class="QLabel" name="nombreUsuarioVotante">
               <property name="text">
                <string>u</string>
               </property>
@@ -936,7 +945,7 @@ QAction{
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_13">
+             <widget class="QLabel" name="correoVotante">
               <property name="text">
                <string>c</string>
               </property>
@@ -958,7 +967,7 @@ QAction{
            </layout>
           </item>
           <item row="4" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_9">
+           <widget class="QLabel" name="imagenVotante">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -984,7 +993,7 @@ QAction{
            </spacer>
           </item>
           <item row="1" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_8">
+           <widget class="QLabel" name="label_titulov1">
             <property name="font">
              <font>
               <family>Bahnschrift</family>
@@ -1027,7 +1036,7 @@ QAction{
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_14">
+             <widget class="QLabel" name="INE">
               <property name="text">
                <string>i</string>
               </property>
@@ -1079,7 +1088,7 @@ QAction{
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_24">
+             <widget class="QLabel" name="nombreVotante">
               <property name="text">
                <string>n</string>
               </property>
@@ -1241,7 +1250,7 @@ QAction{
         <item>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="4" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_17">
+           <widget class="QLabel" name="imagenPartido">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -1267,7 +1276,7 @@ QAction{
            </spacer>
           </item>
           <item row="1" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_16">
+           <widget class="QLabel" name="titulop1">
             <property name="font">
              <font>
               <family>Bahnschrift</family>
@@ -1323,9 +1332,9 @@ QAction{
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_19">
+             <widget class="QLabel" name="nombreUsuarioPartido">
               <property name="text">
-               <string>admin</string>
+               <string>p</string>
               </property>
              </widget>
             </item>
@@ -1375,9 +1384,9 @@ QAction{
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_21">
+             <widget class="QLabel" name="correoPartido">
               <property name="text">
-               <string>admin@dominio.com</string>
+               <string>partido@dominio.com</string>
               </property>
              </widget>
             </item>
@@ -1427,7 +1436,7 @@ QAction{
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_22">
+             <widget class="QLabel" name="nombrePartido">
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -1457,7 +1466,7 @@ QAction{
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_35">
+           <widget class="QLabel" name="titulop2">
             <property name="font">
              <font>
               <family>Bahnschrift</family>
@@ -1747,7 +1756,7 @@ QAction{
              </spacer>
             </item>
             <item row="3" column="3">
-             <widget class="QLineEdit" name="lineEdit_5">
+             <widget class="QLineEdit" name="lineEdit_Beneficios">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -1763,10 +1772,10 @@ QAction{
              </widget>
             </item>
             <item row="0" column="3">
-             <widget class="QComboBox" name="comboBox"/>
+             <widget class="QComboBox" name="comboBox_candidato"/>
             </item>
             <item row="2" column="3">
-             <widget class="QLineEdit" name="lineEdit_4">
+             <widget class="QLineEdit" name="lineEdit_Propuesta">
               <property name="minimumSize">
                <size>
                 <width>0</width>
