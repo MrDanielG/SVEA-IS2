@@ -6,6 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //ui->label_contrasena->setText("aiuda");
+    int indice=ui->stackedWidget->currentIndex();
+
+    if(indice==0){
+       ui->toolBar_Admin->setVisible(false);
+    }
+
     qDebug() << "Daniel";
 }
 
