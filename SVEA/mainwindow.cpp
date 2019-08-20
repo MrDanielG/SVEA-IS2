@@ -140,23 +140,31 @@ void MainWindow::on_pushButton_ingresar_clicked()
 
         //Recuperar Contraseña de Admin
         query.exec("SELECT contra_usuario FROM usuario WHERE id_tipo_usuario = 1 ");
-        while(query.next()){
-            dbAdminContra = query.value(0).toString();
-        }
+        query.next();
+        dbAdminContra = query.value(0).toString();
+        qDebug()<<dbAdminContra;
         query.finish();
 
         //Recuperar Usuario de Admin
         query.exec("SELECT id_usuario FROM usuario WHERE id_tipo_usuario = 1 ");
-        while(query.next()){
-            dbAdminUsuario = query.value(0).toString();
-        }
+        query.next();
+        dbAdminUsuario = query.value(0).toString();
         query.finish();
 
         if(login_usuario == dbAdminUsuario && login_contra == dbAdminContra){
-            //Mostrar UI Usuario
             cambiarStacked(1);
             ui->toolBar_Admin->setVisible(true);
         }
+
+        query.exec("SELECT contra_usuario FROM usuario WHERE id_tipo_usuario = 1 ");
+        query.next();
+        dbAdminContra = query.value(0).toString();
+        qDebug()<<dbAdminContra;
+        query.finish();
+
+        //Ui Votante
+        //if(login_usuario == );
+
 
     }
 }
