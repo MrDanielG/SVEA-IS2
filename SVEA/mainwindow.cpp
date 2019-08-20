@@ -1,12 +1,24 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "QDebug"
+#include "QMessageBox"
+
+#include <QTranslator>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //db.setDatabaseName("DRIVER={MySQL ODBC 8.0 Unicode Driver};Server=localhost;uid=root;Database=db_svea;");
 
+    db.setDatabaseName("qtSVEA");
+    //if(!db.open()){
+        //QMessageBox::critical(this,"Error",db.lastError().text());
+     //   return;
+    //}
+    //else{
+
+    //}
     cambiarStacked(1);
 
 }

@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QStyleFactory>
-#include <QtSql/QSqlDatabase>
+
 
 int main(int argc, char *argv[])
 {
