@@ -6,12 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(5);
     //ui->label_contrasena->setText("aiuda");
-    int indice=ui->stackedWidget->currentIndex();
 
-
-    if(indice==0){
+    if(ui->stackedWidget->currentIndex()==0||ui->stackedWidget->currentIndex()>5){
        ui->toolBar_Admin->setVisible(false);
     }
 
@@ -26,10 +24,29 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionAdministrador_triggered()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    ui->actionAdministrador->setChecked(true);
+    ui->actionAdministrador->setCheckable(true);
 }
 
 void MainWindow::on_actionCrear_eleccion_triggered()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    ui->actionAdministrador->setCheckable(true);
+}
+
+void MainWindow::on_actionGenerarUsuarios_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->actionAdministrador->setCheckable(true);
+}
+
+void MainWindow::on_actionValidar_propuestas_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+    ui->actionAdministrador->setCheckable(true);
+}
+
+void MainWindow::on_actionCerrar_sesion_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+    ui->actionAdministrador->setCheckable(true);
 }

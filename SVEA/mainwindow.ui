@@ -13,6 +13,22 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QToolBar {
+    background: white;
+    spacing: 3px; /* spacing between items in the tool bar */
+}
+
+QToolBar::handle {
+    image: url(handle.png);
+}
+
+QAction{
+	border-radius: 5px;
+	height: 60px;
+	border-color: 5px black solid;
+}</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
@@ -191,8 +207,14 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="page"/>
-      <widget class="QWidget" name="page_2"/>
+      <widget class="QWidget" name="page_a3"/>
+      <widget class="QWidget" name="page_a4"/>
+      <widget class="QWidget" name="page_v1"/>
+      <widget class="QWidget" name="page_v2"/>
+      <widget class="QWidget" name="page_v3"/>
+      <widget class="QWidget" name="page_p1"/>
+      <widget class="QWidget" name="page_p2"/>
+      <widget class="QWidget" name="page_p3"/>
      </widget>
     </item>
    </layout>
@@ -207,14 +229,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="toolBar_Admin">
    <property name="enabled">
@@ -225,6 +239,12 @@
      <width>0</width>
      <height>0</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bahnschrift</family>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="windowTitle">
     <string>toolBar</string>
@@ -254,12 +274,37 @@
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
    <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
+    <enum>LeftToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
+   <addaction name="actionVotante"/>
+   <addaction name="actionPropuestas"/>
+   <addaction name="actionVotar"/>
+   <addaction name="actionCerrar_sesion_2"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_Partido">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionPartido"/>
+   <addaction name="actionRegistrar_candidatos"/>
+   <addaction name="actionCrear_propuesta"/>
+   <addaction name="actionCerrar_sesion_3"/>
   </widget>
   <action name="actionAdministrador">
    <property name="checked">
@@ -279,6 +324,11 @@
    <property name="text">
     <string>Crear elección</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionGenerarUsuarios">
    <property name="text">
@@ -291,6 +341,46 @@
    </property>
   </action>
   <action name="actionCerrar_sesion">
+   <property name="text">
+    <string>Cerrar sesión</string>
+   </property>
+  </action>
+  <action name="actionVotante">
+   <property name="text">
+    <string>Votante</string>
+   </property>
+  </action>
+  <action name="actionPropuestas">
+   <property name="text">
+    <string>Propuestas</string>
+   </property>
+  </action>
+  <action name="actionVotar">
+   <property name="text">
+    <string>Votar</string>
+   </property>
+  </action>
+  <action name="actionCerrar_sesion_2">
+   <property name="text">
+    <string>Cerrar sesión</string>
+   </property>
+  </action>
+  <action name="actionPartido">
+   <property name="text">
+    <string>Partido</string>
+   </property>
+  </action>
+  <action name="actionRegistrar_candidatos">
+   <property name="text">
+    <string>Registrar candidatos</string>
+   </property>
+  </action>
+  <action name="actionCrear_propuesta">
+   <property name="text">
+    <string>Crear propuesta</string>
+   </property>
+  </action>
+  <action name="actionCerrar_sesion_3">
    <property name="text">
     <string>Cerrar sesión</string>
    </property>

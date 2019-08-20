@@ -20,6 +20,12 @@ private slots:
 
     void on_actionCrear_eleccion_triggered();
 
+    void on_actionGenerarUsuarios_triggered();
+
+    void on_actionValidar_propuestas_triggered();
+
+    void on_actionCerrar_sesion_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

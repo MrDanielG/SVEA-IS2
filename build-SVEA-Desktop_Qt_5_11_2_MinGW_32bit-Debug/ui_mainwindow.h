@@ -35,6 +35,14 @@ public:
     QAction *actionGenerarUsuarios;
     QAction *actionValidar_propuestas;
     QAction *actionCerrar_sesion;
+    QAction *actionVotante;
+    QAction *actionPropuestas;
+    QAction *actionVotar;
+    QAction *actionCerrar_sesion_2;
+    QAction *actionPartido;
+    QAction *actionRegistrar_candidatos;
+    QAction *actionCrear_propuesta;
+    QAction *actionCerrar_sesion_3;
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QStackedWidget *stackedWidget;
@@ -56,19 +64,39 @@ public:
     QLabel *label;
     QWidget *page_a2;
     QLabel *label_2;
-    QWidget *page;
-    QWidget *page_2;
+    QWidget *page_a3;
+    QWidget *page_a4;
+    QWidget *page_v1;
+    QWidget *page_v2;
+    QWidget *page_v3;
+    QWidget *page_p1;
+    QWidget *page_p2;
+    QWidget *page_p3;
     QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
     QToolBar *toolBar_Admin;
     QToolBar *toolBar_Votante;
+    QToolBar *toolBar_Partido;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1900, 700);
+        MainWindow->setStyleSheet(QLatin1String("QToolBar {\n"
+"    background: white;\n"
+"    spacing: 3px; /* spacing between items in the tool bar */\n"
+"}\n"
+"\n"
+"QToolBar::handle {\n"
+"    image: url(handle.png);\n"
+"}\n"
+"\n"
+"QAction{\n"
+"	border-radius: 5px;\n"
+"	height: 60px;\n"
+"	border-color: 5px black solid;\n"
+"}"));
         actionAdministrador = new QAction(MainWindow);
         actionAdministrador->setObjectName(QStringLiteral("actionAdministrador"));
         actionAdministrador->setChecked(false);
@@ -76,12 +104,31 @@ public:
         actionCrear_eleccion = new QAction(MainWindow);
         actionCrear_eleccion->setObjectName(QStringLiteral("actionCrear_eleccion"));
         actionCrear_eleccion->setChecked(false);
+        QFont font;
+        font.setPointSize(8);
+        actionCrear_eleccion->setFont(font);
         actionGenerarUsuarios = new QAction(MainWindow);
         actionGenerarUsuarios->setObjectName(QStringLiteral("actionGenerarUsuarios"));
         actionValidar_propuestas = new QAction(MainWindow);
         actionValidar_propuestas->setObjectName(QStringLiteral("actionValidar_propuestas"));
         actionCerrar_sesion = new QAction(MainWindow);
         actionCerrar_sesion->setObjectName(QStringLiteral("actionCerrar_sesion"));
+        actionVotante = new QAction(MainWindow);
+        actionVotante->setObjectName(QStringLiteral("actionVotante"));
+        actionPropuestas = new QAction(MainWindow);
+        actionPropuestas->setObjectName(QStringLiteral("actionPropuestas"));
+        actionVotar = new QAction(MainWindow);
+        actionVotar->setObjectName(QStringLiteral("actionVotar"));
+        actionCerrar_sesion_2 = new QAction(MainWindow);
+        actionCerrar_sesion_2->setObjectName(QStringLiteral("actionCerrar_sesion_2"));
+        actionPartido = new QAction(MainWindow);
+        actionPartido->setObjectName(QStringLiteral("actionPartido"));
+        actionRegistrar_candidatos = new QAction(MainWindow);
+        actionRegistrar_candidatos->setObjectName(QStringLiteral("actionRegistrar_candidatos"));
+        actionCrear_propuesta = new QAction(MainWindow);
+        actionCrear_propuesta->setObjectName(QStringLiteral("actionCrear_propuesta"));
+        actionCerrar_sesion_3 = new QAction(MainWindow);
+        actionCerrar_sesion_3->setObjectName(QStringLiteral("actionCerrar_sesion_3"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -115,9 +162,9 @@ public:
 
         label_tituloInicio = new QLabel(page_login);
         label_tituloInicio->setObjectName(QStringLiteral("label_tituloInicio"));
-        QFont font;
-        font.setPointSize(20);
-        label_tituloInicio->setFont(font);
+        QFont font1;
+        font1.setPointSize(20);
+        label_tituloInicio->setFont(font1);
 
         verticalLayout_2->addWidget(label_tituloInicio, 0, Qt::AlignHCenter);
 
@@ -129,9 +176,9 @@ public:
 
         label_usuario = new QLabel(page_login);
         label_usuario->setObjectName(QStringLiteral("label_usuario"));
-        QFont font1;
-        font1.setPointSize(10);
-        label_usuario->setFont(font1);
+        QFont font2;
+        font2.setPointSize(10);
+        label_usuario->setFont(font2);
 
         verticalLayout_2->addWidget(label_usuario, 0, Qt::AlignHCenter);
 
@@ -143,7 +190,7 @@ public:
 
         label_contrasena = new QLabel(page_login);
         label_contrasena->setObjectName(QStringLiteral("label_contrasena"));
-        label_contrasena->setFont(font1);
+        label_contrasena->setFont(font2);
 
         verticalLayout_2->addWidget(label_contrasena, 0, Qt::AlignHCenter);
 
@@ -154,7 +201,7 @@ public:
         pushButton_ingresar = new QPushButton(page_login);
         pushButton_ingresar->setObjectName(QStringLiteral("pushButton_ingresar"));
         pushButton_ingresar->setMaximumSize(QSize(150, 16777215));
-        pushButton_ingresar->setFont(font1);
+        pushButton_ingresar->setFont(font2);
 
         verticalLayout_2->addWidget(pushButton_ingresar, 0, Qt::AlignHCenter);
 
@@ -181,12 +228,30 @@ public:
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(150, 20, 47, 13));
         stackedWidget->addWidget(page_a2);
-        page = new QWidget();
-        page->setObjectName(QStringLiteral("page"));
-        stackedWidget->addWidget(page);
-        page_2 = new QWidget();
-        page_2->setObjectName(QStringLiteral("page_2"));
-        stackedWidget->addWidget(page_2);
+        page_a3 = new QWidget();
+        page_a3->setObjectName(QStringLiteral("page_a3"));
+        stackedWidget->addWidget(page_a3);
+        page_a4 = new QWidget();
+        page_a4->setObjectName(QStringLiteral("page_a4"));
+        stackedWidget->addWidget(page_a4);
+        page_v1 = new QWidget();
+        page_v1->setObjectName(QStringLiteral("page_v1"));
+        stackedWidget->addWidget(page_v1);
+        page_v2 = new QWidget();
+        page_v2->setObjectName(QStringLiteral("page_v2"));
+        stackedWidget->addWidget(page_v2);
+        page_v3 = new QWidget();
+        page_v3->setObjectName(QStringLiteral("page_v3"));
+        stackedWidget->addWidget(page_v3);
+        page_p1 = new QWidget();
+        page_p1->setObjectName(QStringLiteral("page_p1"));
+        stackedWidget->addWidget(page_p1);
+        page_p2 = new QWidget();
+        page_p2->setObjectName(QStringLiteral("page_p2"));
+        stackedWidget->addWidget(page_p2);
+        page_p3 = new QWidget();
+        page_p3->setObjectName(QStringLiteral("page_p3"));
+        stackedWidget->addWidget(page_p3);
 
         horizontalLayout->addWidget(stackedWidget);
 
@@ -195,9 +260,6 @@ public:
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1900, 21));
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
@@ -205,20 +267,36 @@ public:
         toolBar_Admin->setObjectName(QStringLiteral("toolBar_Admin"));
         toolBar_Admin->setEnabled(true);
         toolBar_Admin->setMinimumSize(QSize(0, 0));
+        QFont font3;
+        font3.setFamily(QStringLiteral("Bahnschrift"));
+        font3.setPointSize(14);
+        toolBar_Admin->setFont(font3);
         toolBar_Admin->setMovable(false);
         toolBar_Admin->setToolButtonStyle(Qt::ToolButtonIconOnly);
         toolBar_Admin->setFloatable(true);
         MainWindow->addToolBar(Qt::LeftToolBarArea, toolBar_Admin);
         toolBar_Votante = new QToolBar(MainWindow);
         toolBar_Votante->setObjectName(QStringLiteral("toolBar_Votante"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar_Votante);
-        MainWindow->insertToolBarBreak(toolBar_Votante);
+        toolBar_Votante->setMovable(false);
+        MainWindow->addToolBar(Qt::LeftToolBarArea, toolBar_Votante);
+        toolBar_Partido = new QToolBar(MainWindow);
+        toolBar_Partido->setObjectName(QStringLiteral("toolBar_Partido"));
+        toolBar_Partido->setMovable(false);
+        MainWindow->addToolBar(Qt::LeftToolBarArea, toolBar_Partido);
 
         toolBar_Admin->addAction(actionAdministrador);
         toolBar_Admin->addAction(actionCrear_eleccion);
         toolBar_Admin->addAction(actionGenerarUsuarios);
         toolBar_Admin->addAction(actionValidar_propuestas);
         toolBar_Admin->addAction(actionCerrar_sesion);
+        toolBar_Votante->addAction(actionVotante);
+        toolBar_Votante->addAction(actionPropuestas);
+        toolBar_Votante->addAction(actionVotar);
+        toolBar_Votante->addAction(actionCerrar_sesion_2);
+        toolBar_Partido->addAction(actionPartido);
+        toolBar_Partido->addAction(actionRegistrar_candidatos);
+        toolBar_Partido->addAction(actionCrear_propuesta);
+        toolBar_Partido->addAction(actionCerrar_sesion_3);
 
         retranslateUi(MainWindow);
 
@@ -233,6 +311,14 @@ public:
         actionGenerarUsuarios->setText(QApplication::translate("MainWindow", "Generar usuarios", nullptr));
         actionValidar_propuestas->setText(QApplication::translate("MainWindow", "Validar propuestas", nullptr));
         actionCerrar_sesion->setText(QApplication::translate("MainWindow", "Cerrar sesi\303\263n", nullptr));
+        actionVotante->setText(QApplication::translate("MainWindow", "Votante", nullptr));
+        actionPropuestas->setText(QApplication::translate("MainWindow", "Propuestas", nullptr));
+        actionVotar->setText(QApplication::translate("MainWindow", "Votar", nullptr));
+        actionCerrar_sesion_2->setText(QApplication::translate("MainWindow", "Cerrar sesi\303\263n", nullptr));
+        actionPartido->setText(QApplication::translate("MainWindow", "Partido", nullptr));
+        actionRegistrar_candidatos->setText(QApplication::translate("MainWindow", "Registrar candidatos", nullptr));
+        actionCrear_propuesta->setText(QApplication::translate("MainWindow", "Crear propuesta", nullptr));
+        actionCerrar_sesion_3->setText(QApplication::translate("MainWindow", "Cerrar sesi\303\263n", nullptr));
         label_inicio->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         label_tituloInicio->setText(QApplication::translate("MainWindow", "Iniciar sesi\303\263n", nullptr));
         label_usuario->setText(QApplication::translate("MainWindow", "Usuario", nullptr));
@@ -242,6 +328,7 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "Crear elecci\303\263n", nullptr));
         toolBar_Admin->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
         toolBar_Votante->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
+        toolBar_Partido->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
 };
