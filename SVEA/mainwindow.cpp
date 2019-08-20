@@ -12,13 +12,13 @@ MainWindow::MainWindow(QWidget *parent) :
     //db.setDatabaseName("DRIVER={MySQL ODBC 8.0 Unicode Driver};Server=localhost;uid=root;Database=db_svea;");
 
     db.setDatabaseName("qtSVEA");
-    //if(!db.open()){
-        //QMessageBox::critical(this,"Error",db.lastError().text());
-     //   return;
-    //}
-    //else{
+    if(!db.open()){
+        QMessageBox::critical(this,"Error",db.lastError().text());
+        return;
+    }
+    else{
 
-    //}
+    }
     cambiarStacked(1);
 
 }
