@@ -4,6 +4,7 @@
 #include "QMessageBox"
 #include "QString"
 #include <QTranslator>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -12,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //db.setDatabaseName("DRIVER={MySQL ODBC 8.0 Unicode Driver};Server=localhost;uid=root;Database=db_svea;");
 
     db.setDatabaseName("qtSVEA");
+
     if(!db.open()){
         QMessageBox::critical(this,"Error",db.lastError().text());
         return;
@@ -130,20 +132,35 @@ void MainWindow::on_pushButton_ingresar_clicked()
     }
     else {
         //Aqui todo el pinshi codigo
-        QString usuarioID = ui->lineEdit_usuario->text();
-        QString usuarioContra = ui->lineEdit_contrasena->text();
+        QString login_usuario = ui->lineEdit_usuario->text();
+        QString login_contra = ui->lineEdit_contrasena->text();
 
-        qDebug()<<usuarioID;
-        qDebug()<<usuarioContra;
+        qDebug()<<login_usuario;
+        qDebug()<<login_contra;
 
-        QString dbUsuario;
-        QString dbContra;
+        QString dbAdminUsuario;
+        QString dbAdminContra;
 
         QSqlQuery query(db);
-        query.exec("SELECT contra_usuario FROM usuario");
 
-        dbContra = query.value(0).toString();
-        qDebug()<<dbContra;
+        //Recuperar Contraseña de Admin
+        query.exec("SELECT contra_usuario FROM usuario WHERE id_tipo_usuario = 1 ");
+        while(query.next()){
+            dbAdminContra = query.value(0).toString();
+        }
+        query.finish();
+
+        //Recuperar Usuario de Admin
+        query.exec("SELECT id_usuario FROM usuario WHERE id_tipo_usuario = 1 ");
+        while(query.next()){
+            dbAdminUsuario = query.value(0).toString();
+        }
+        query.finish();
+
+        if(login_usuario == dbAdminUsuario && login_contra == dbAdminContra){
+            //Mostrar UI Usuario
+        }
+
     }
 }
 
