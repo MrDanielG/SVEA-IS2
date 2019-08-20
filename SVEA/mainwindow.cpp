@@ -6,7 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    cambiarStacked(8);
+
+    cambiarStacked(1);
 
 }
 
