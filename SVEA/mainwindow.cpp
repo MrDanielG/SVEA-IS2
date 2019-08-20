@@ -124,10 +124,6 @@ void MainWindow::on_actionCerrar_sesion_3_triggered()
 
 void MainWindow::on_pushButton_ingresar_clicked()
 {
-    qDebug()<<"asdf";
-
-    //QSqlDatabase mDatabase = QSqlDatabase::database("ConexionPrincipal");
-
     if(!db.isOpen()){
         qDebug() <<"Error en la conexion";
         return;
@@ -143,11 +139,11 @@ void MainWindow::on_pushButton_ingresar_clicked()
         QString dbUsuario;
         QString dbContra;
 
-        QSqlQuery queryFile(db);
-        queryFile.exec("SELECT contra_usuario FROM usuario WHERE id_usuario = 1");
-        dbContra = queryFile.value(1).toString();
+        QSqlQuery query(db);
+        query.exec("SELECT contra_usuario FROM usuario");
+
+        dbContra = query.value(0).toString();
         qDebug()<<dbContra;
-
     }
-
 }
+

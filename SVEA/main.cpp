@@ -7,10 +7,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    //Base De Datos
-
-    //db.setDatabaseName("qtSVEA");
-
     w.show();
     a.setStyle(QStyleFactory::create("Fusion"));
     QPalette p = a.palette();
