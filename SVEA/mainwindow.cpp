@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent) :
         Modelo4->setTable("voto");
         Modelo4->setEditStrategy(QSqlRelationalTableModel::OnManualSubmit);
         Modelo4->select();
-        ui->tableView_validarPropuesta->setModel(Modelo4);
+        ui->tableView_voto->setModel(Modelo4);
 
 
         Modelo4->setHeaderData(Modelo4->fieldIndex("pa.foto_partido"),Qt::Horizontal,tr("Foto partido"));
@@ -98,22 +98,45 @@ void MainWindow::on_actionAdministrador_triggered()
 
 void MainWindow::on_actionCrear_eleccion_triggered()
 {
+    ui->fechaVotacion->setMinimumDate(QDate::currentDate());
+    ui->fechaFinPresentacion->setMinimumDate(QDate::currentDate());
+    ui->fechaFinRegistro->setMinimumDate(QDate::currentDate());
+    ui->fechaInicioPresentacion->setMinimumDate(QDate::currentDate());
+    ui->fechaInicioRegistro->setMinimumDate(QDate::currentDate());
+
     ui->stackedWidget->setCurrentIndex(2);
     ui->actionAdministrador->setCheckable(true);
 }
 
 void MainWindow::on_actionGenerarUsuarios_triggered()
 {
-    /*
-    QStandardItemModel *model = new QStandardItemModel;
-    QImage image("D:/bd_svea/panlogo.png");
+    QSqlQuery query(db); QString ubicacion;
+    int partidos;
+    query.exec("select count(*) from partido");
+    query.next();
+    partidos = query.value(0).toInt();
+    query.finish();
+    qDebug()<< partidos;
+    QStandardItemModel *modelImage = new QStandardItemModel;
+    for(int p=0; p<partidos; p++){
+        query.exec("SELECT foto_partido FROM partido WHERE id_partido="+QString::number(p+1)+"");
+        query.next();
+        ubicacion = query.value(0).toString();
+        query.finish();
 
-    QStandardItem *item = new QStandardItem();
-    //item->
-    item->setData(QVariant(QPixmap::fromImage(image)), Qt::DecorationRole);
-    model->setItem(0, 0, item);
-    ui->tableView_partidos->setModel(model);
-    */
+        qDebug()<< ubicacion;
+
+
+        QImage image(ubicacion);
+         QStandardItem *item = new QStandardItem();
+        item->setData(QVariant(QPixmap::fromImage(image)), Qt::DecorationRole);
+        modelImage->setItem(p, 0, item);
+        ui->tableView_logos->setModel(modelImage);
+
+
+
+    }
+
     ui->stackedWidget->setCurrentIndex(3);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -285,3 +308,20 @@ void MainWindow::on_pushButton_ingresar_clicked()
     }
 }
 
+
+void MainWindow::on_pushButton_crearEleccion_clicked()
+{
+    QSqlQuery query(db);
+
+//    ui->fechaVotacion->setMinimumDate(QDate::currentDate());
+//    ui->fechaFinPresentacion->setMinimumDate(QDate::currentDate());
+//    ui->fechaFinRegistro->setMinimumDate(QDate::currentDate());
+//    ui->fechaInicioPresentacion->setMinimumDate(QDate::currentDate());
+//    ui->fechaInicioRegistro->setMinimumDate(QDate::currentDate());
+//    //Recuperar Contraseña de Admin
+//    query.exec("SELECT contra_usuario FROM usuario WHERE id_tipo_usuario = 1 ");
+//    query.next();
+//    dbAdminContra = query.value(0).toString();
+//    qDebug()<<dbAdminContra;
+//    query.finish();
+}
