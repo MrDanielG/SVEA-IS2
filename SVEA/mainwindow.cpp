@@ -47,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent) :
         Modelo3->setEditStrategy(QSqlRelationalTableModel::OnManualSubmit);
         Modelo3->select();
         ui->tableView_validarPropuesta->setModel(Modelo3);
+        ui->vista_propuestas->setModel(Modelo3);
 
 
         Modelo3->setHeaderData(Modelo3->fieldIndex("p.id_propuesta"),Qt::Horizontal,tr("ID propuesta"));
