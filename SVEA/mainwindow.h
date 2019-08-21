@@ -51,6 +51,8 @@ private slots:
 
     void on_pushButton_crearEleccion_clicked();
 
+    void on_pushButton_generarUsuarios_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "ConexionPrincipal");
