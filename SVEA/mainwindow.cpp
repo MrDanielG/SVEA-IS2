@@ -202,6 +202,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
 {
     if(ui->lineEdit_usuario->text().isEmpty()||ui->label_contrasena->text().isEmpty()){
         QMessageBox::warning(this,"Campos vacíos","Debe completar todos los campos.");
+        return;
     }
     if(!db.isOpen()){
         qDebug() <<"Error en la conexion";
@@ -324,8 +325,18 @@ void MainWindow::on_pushButton_crearEleccion_clicked()
     h1=ui->horaInicioVotacion->text();
     h2=ui->horaFinVotacion->text();
 
-    query.exec("INSERT into registro_propuestas(fehca_inicio,fecha_fin) values("+
-               d5.toString("yyyy.MM.dd")+","+d3.toString("yyyy.MM.dd")+")");
+    if(ui->horaInicioVotacion>=ui->horaFinVotacion||
+            ui->fechaFinRegistro<ui->fechaInicioRegistro
+            ||ui->fechaFinPresentacion<ui->fechaInicioPresentacion){
+        QMessageBox::warning(this,"Inconsistencia","Las fechas fin no pueden ser"
+                                                   " menores a las de inicio."
+                                                   "La hora fin no puede ser menor"
+                                                   " ni igual a la hora inicio");
+        return;
+    }
+
+    query.exec("INSERT into registro_propuestas(fehca_inicio,fecha_fin) values('"+
+               d5.toString("yyyy.MM.dd")+"','"+d3.toString("yyyy.MM.dd")+"')");
     query.next();
     query.finish();
 
@@ -334,8 +345,8 @@ void MainWindow::on_pushButton_crearEleccion_clicked()
     id1 = query.value(0).toString();
     query.finish();
 
-    query.exec("INSERT into presentacion_propuestas(fecha_inicio,fecha_fin) values("+
-               d4.toString("yyyy.MM.dd")+","+d2.toString("yyyy.MM.dd")+")");
+    query.exec("INSERT into presentacion_propuestas(fecha_inicio,fecha_final) values('"+
+               d4.toString("yyyy.MM.dd")+"','"+d2.toString("yyyy.MM.dd")+"')");
     query.next();
     query.finish();
 
@@ -344,8 +355,8 @@ void MainWindow::on_pushButton_crearEleccion_clicked()
     id2 = query.value(0).toString();
     query.finish();
 
-    query.exec("INSERT into votacion(fecha_votacion,hora_inicio,hora_fin) values("+
-               d1.toString("yyyy.MM.dd")+","+h1+","+h2+")");
+    query.exec("INSERT into votacion(fecha_votacion,hora_inicio,hora_final) values('"+
+               d1.toString("yyyy.MM.dd")+"','"+h1+"','"+h2+"')");
     query.next();
     query.finish();
 
