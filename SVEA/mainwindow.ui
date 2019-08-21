@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SVEA</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/new/prefix1/inicio.png</normaloff>:/new/prefix1/inicio.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QToolBar {
@@ -45,8 +49,20 @@ QAction{
               <height>0</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="text">
-             <string>TextLabel</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/new/prefix1/inicio2.jpg</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -202,8 +218,20 @@ QAction{
               <height>200</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>200</height>
+             </size>
+            </property>
             <property name="text">
-             <string>Imagen aquí</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/new/prefix1/admin-icon.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -743,43 +771,6 @@ QAction{
              </spacer>
             </item>
             <item>
-             <widget class="QTableView" name="tableView_logos">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="editTriggers">
-               <set>QAbstractItemView::NoEditTriggers</set>
-              </property>
-              <property name="tabKeyNavigation">
-               <bool>false</bool>
-              </property>
-              <property name="showDropIndicator" stdset="0">
-               <bool>false</bool>
-              </property>
-              <property name="dragDropOverwriteMode">
-               <bool>false</bool>
-              </property>
-              <property name="selectionMode">
-               <enum>QAbstractItemView::SingleSelection</enum>
-              </property>
-              <property name="textElideMode">
-               <enum>Qt::ElideNone</enum>
-              </property>
-              <attribute name="verticalHeaderVisible">
-               <bool>false</bool>
-              </attribute>
-             </widget>
-            </item>
-            <item>
              <widget class="QTableView" name="tableView_partidos">
               <property name="editTriggers">
                <set>QAbstractItemView::NoEditTriggers</set>
@@ -1054,6 +1045,11 @@ QAction{
               <width>0</width>
               <height>200</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS UI Gothic</family>
+             </font>
             </property>
             <property name="text">
              <string>Imagen aquí</string>
@@ -1338,8 +1334,25 @@ QAction{
               <height>200</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>200</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Myanmar Text</family>
+             </font>
+            </property>
             <property name="text">
-             <string>Imagen aquí</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/new/prefix1/votante.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1886,6 +1899,8 @@ QAction{
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

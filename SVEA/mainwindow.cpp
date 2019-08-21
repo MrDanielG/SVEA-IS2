@@ -119,7 +119,7 @@ void MainWindow::on_actionGenerarUsuarios_triggered()
     partidos = query.value(0).toInt();
     query.finish();
     qDebug()<< partidos;
-    QStandardItemModel *modelImage = new QStandardItemModel;
+
     for(int p=0; p<partidos; p++){
         query.exec("SELECT foto_partido FROM partido WHERE id_partido="+QString::number(p+1)+"");
         query.next();
@@ -129,11 +129,7 @@ void MainWindow::on_actionGenerarUsuarios_triggered()
         qDebug()<< ubicacion;
 
 
-        QImage image(ubicacion);
-         QStandardItem *item = new QStandardItem();
-        item->setData(QVariant(QPixmap::fromImage(image)), Qt::DecorationRole);
-        modelImage->setItem(p, 0, item);
-        ui->tableView_logos->setModel(modelImage);
+
 
 
 
@@ -202,22 +198,26 @@ void MainWindow::on_actionCerrar_sesion_3_triggered()
 
 void MainWindow::on_pushButton_ingresar_clicked()
 {
+
     if(ui->lineEdit_usuario->text().isEmpty()||ui->label_contrasena->text().isEmpty()){
         QMessageBox::warning(this,"Campos vacíos","Debe completar todos los campos.");
         return;
     }
+
     if(!db.isOpen()){
         qDebug() <<"Error en la conexion";
         return;
     }
     else {
         //Aqui todo el pinshi codigo
+
         QString login_usuario = ui->lineEdit_usuario->text();
         QString login_contra = ui->lineEdit_contrasena->text();
 
         qDebug()<<login_usuario;
         qDebug()<<login_contra;
-
+        ui->lineEdit_usuario->clear();
+        ui->lineEdit_contrasena->clear();
         QString dbAdminUsuario, nombreVotante, ine, nombrePartido;
         QString dbAdminContra, dbCorreo, vUsuario, pUsuario, vCorreo, pCorreo, pNombre, indice;
 
@@ -276,11 +276,13 @@ void MainWindow::on_pushButton_ingresar_clicked()
         indice = query.value(0).toString();
         query.finish();
 
-        query.exec("select foto_partido from partido where id_partido="+indice+"and id_usuario="+login_usuario+"");
+        query.exec("select partido.foto_partido from partido inner join usuario on partido.usuario_id_usuario=usuario.id_usuario where usuario.id_usuario="+login_usuario+"");
         query.next();
         QString ubi = query.value(0).toString();
         query.finish();
         QPixmap logoPartido(ubi);
+            logoPartido.scaledToHeight(200);
+            logoPartido.scaledToWidth(200);
         ui->imagenPartido->setPixmap(logoPartido);
         //ui->imagenPartido->setMask(logoPartido.mask());
 
