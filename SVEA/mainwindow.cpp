@@ -260,7 +260,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
         query.finish();
 
         query.exec("select nombre_partido from partido inner join usuario on usuario.id_usuario=partido.usuario_id_usuario and usuario.id_tipo_usuario=2 where"
-                   " id_usuario="+login_usuario+" ");
+                   " id_usuario="+login_usuario+"");
         query.next();
         pNombre = query.value(0).toString();
         query.finish();
