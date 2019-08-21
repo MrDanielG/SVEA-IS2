@@ -48,7 +48,7 @@ CREATE TABLE `candidato` (
   `informacion` varchar(100) DEFAULT NULL,
   `id_partido` int(11) NOT NULL,
   `id_estudios_candidato` int(11) NOT NULL,
-  `id_proceso_electoral` int(11) NOT NULL
+  `id_proceso_electoral` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
