@@ -31,6 +31,18 @@ QAction{
 	border-radius: 5px;
 	height: 60px;
 	border-color: 5px black solid;
+}
+QPushButton:hover{
+	background-color: rgba(129,181,234,50);
+	color:rgb(55,115,164);
+}
+QPushButton{
+	color: white;
+	background-color: #2E7C9C;
+	border-width: 0px;
+	border-radius: 3px;
+padding: 5px;
+font: 10pt;
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -1052,7 +1064,13 @@ QAction{
            <widget class="QLabel" name="imagenVotante">
             <property name="minimumSize">
              <size>
-              <width>0</width>
+              <width>200</width>
+              <height>200</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
               <height>200</height>
              </size>
             </property>
@@ -1062,7 +1080,13 @@ QAction{
              </font>
             </property>
             <property name="text">
-             <string>Imagen aquí</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/new/prefix1/votante.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
