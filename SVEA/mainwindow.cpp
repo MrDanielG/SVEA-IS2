@@ -325,3 +325,46 @@ void MainWindow::on_pushButton_crearEleccion_clicked()
 //    qDebug()<<dbAdminContra;
 //    query.finish();
 }
+
+void MainWindow::on_pushButton_generarUsuarios_clicked()
+{
+    int rand_num;
+    qDebug()<<rand_num;
+
+    if(!db.isOpen()){
+        qDebug() <<"Error en la conexion";
+        return;
+    }
+    else{
+        QSqlQuery query(db);
+        QSqlQuery creaUsuario(db);
+        QSqlQuery query3(db);
+        QSqlQuery query4(db);
+
+        query.exec("SELECT ine FROM vista_votantes");
+        while(query.next()){
+            QString dbine = query.value(0).toString();
+
+            qDebug()<<dbine;
+
+            rand_num = QRandomGenerator::global()->bounded(999999,9999999);
+            qDebug()<<rand_num;
+
+            creaUsuario.exec("INSERT INTO `usuario`(`contra_usuario`, `correo_usuario`, `id_tipo_usuario`) VALUES ("+QString::number(rand_num)+",'votante@votante.com',2)");
+
+            query3.exec("SELECT id_usuario FROM usuario WHERE contra_usuario = '"+QString::number(rand_num)+"' ");
+            query3.next();
+            QString dbid = query3.value(0).toString();
+            query3.finish();
+
+
+            query4.exec("UPDATE `votante` SET `usuario_id_usuario`= "+dbid+" WHERE ine = "+dbine+" ");
+            query4.next();
+            //QString dbid = query.value(0).toString();
+            query4.finish();
+        }
+    }
+
+    ui->tableView_votantes->setModel(Modelo2);
+    Modelo2->select();
+}
