@@ -470,6 +470,13 @@ ALTER TABLE `usuario`
 ALTER TABLE `votacion`
   MODIFY `id_votacion` int(11) NOT NULL AUTO_INCREMENT;
 
+
+--
+-- AUTO_INCREMENT de la tabla `propuesta`
+--
+ALTER TABLE `propuesta`
+  MODIFY `id_propuesta` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Restricciones para tablas volcadas
 --

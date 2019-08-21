@@ -533,3 +533,33 @@ void MainWindow::on_pushButton_generarUsuarios_clicked()
     ui->tableView_partidos->setModel(Modelo1);
     Modelo1->select();
 }
+
+void MainWindow::on_pushButton_crearPropuesta_clicked()
+{
+    qDebug()<<"CREANDO PROPUESTA";
+
+    ui->lineEdit_Propuesta->setMaxLength(499);
+            ui->lineEdit_Beneficios->setMaxLength(499);
+            if(ui->lineEdit_Propuesta->text().isEmpty()){
+                return;
+            }
+
+            QSqlQuery query3(db);
+
+
+                query3.exec("SELECT id_candidato FROM candidato WHERE nombre_candidato = '"+ui->comboBox_candidato->currentText()+"' ");
+                query3.next();
+                QString candid = query3.value(0).toString();
+                query3.finish();
+                qDebug()<< ui->comboBox_candidato->currentText();
+                query3.exec("INSERT INTO propuesta(contenido,beneficios,validada,candidato_id_candidato)"
+                            " values('"+ui->lineEdit_Propuesta->text()+"','"+ui->lineEdit_Beneficios->text()+"',0,"+
+                        candid+")");
+                query3.next();
+
+                query3.finish();
+
+                ui->lineEdit_Propuesta->clear();
+                ui->lineEdit_Beneficios->clear();
+
+}
