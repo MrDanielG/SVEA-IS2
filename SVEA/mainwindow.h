@@ -55,6 +55,10 @@ private slots:
 
     void on_pushButton_crearPropuesta_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "ConexionPrincipal");

@@ -558,8 +558,49 @@ void MainWindow::on_pushButton_crearPropuesta_clicked()
                 query3.next();
 
                 query3.finish();
+                ui->tableView_validarPropuesta->setModel(Modelo3);
+                ui->vista_propuestas->setModel(Modelo3);
+                Modelo3->select();
 
                 ui->lineEdit_Propuesta->clear();
                 ui->lineEdit_Beneficios->clear();
+
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    QSqlQuery queryA(db);
+
+    QModelIndex sample1= ui->tableView_validarPropuesta->currentIndex();
+    int idpropuestai=sample1.row();
+    QString idpropuesta=ui->tableView_validarPropuesta->model()->data(ui->tableView_validarPropuesta->model()->index(idpropuestai,0)).toString();
+
+        queryA.exec("UPDATE propuesta SET validada=1 where id_propuesta="+idpropuesta+"");
+        queryA.next();
+        QString candid = queryA.value(0).toString();
+        queryA.finish();
+
+        ui->tableView_validarPropuesta->setModel(Modelo3);
+        ui->vista_propuestas->setModel(Modelo3);
+        Modelo3->select();
+
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    QSqlQuery queryR(db);
+    QModelIndex sample1= ui->tableView_validarPropuesta->currentIndex();
+    int idpropuestai=sample1.row();
+    QString idpropuesta=ui->tableView_validarPropuesta->model()->data(ui->tableView_validarPropuesta->model()->index(idpropuestai,0)).toString();
+
+
+        queryR.exec("UPDATE propuesta SET validada=0 where id_propuesta="+idpropuesta+"");
+        queryR.next();
+        QString candid = queryR.value(0).toString();
+        queryR.finish();
+
+        ui->tableView_validarPropuesta->setModel(Modelo3);
+        ui->vista_propuestas->setModel(Modelo3);
+        Modelo3->select();
 
 }
