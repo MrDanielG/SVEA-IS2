@@ -52,6 +52,11 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "ConexionPrincipal");
+    QSqlRelationalTableModel * Modelo1;//clientes
+    QSqlRelationalTableModel * Modelo2;//articulos
+    QSqlRelationalTableModel * Modelo3;//vista
+    QSqlRelationalTableModel * Modelo4;//pedidos
+    QSqlRelationalTableModel * Modelo5;//articulos pedidos
 };
 
 #endif // MAINWINDOW_H

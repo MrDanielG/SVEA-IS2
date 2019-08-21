@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
+    /*
     a.setStyle(QStyleFactory::create("Fusion"));
     QPalette p = a.palette();
     p.setColor(QPalette::Window, QColor(53,53,53));
@@ -16,5 +17,6 @@ int main(int argc, char *argv[])
     p.setColor(QPalette::ButtonText, QColor(255,255,255));
     p.setColor(QPalette::WindowText, QColor(255,255,255));
     a.setPalette(p);
+    */
     return a.exec();
 }
