@@ -236,7 +236,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
         dbAdminUsuario = query.value(0).toString();
         query.finish();
 
-        query.exec("SELECT correo_usuario FROM usuario WHERE id_tipo_usuario = 1 ");
+        query.exec("SELECT correo_usuario FROM usuario WHERE id_tipo_usuario = 1  and id_usuario="+login_usuario+"");
         query.next();
         dbCorreo = query.value(0).toString();
         query.finish();
@@ -248,18 +248,19 @@ void MainWindow::on_pushButton_ingresar_clicked()
             ui->correo_admin->setText(dbCorreo);
         }
 
-        query.exec("SELECT id_usuario FROM usuario WHERE id_tipo_usuario = 2 ");
+        query.exec("SELECT id_usuario FROM usuario WHERE id_tipo_usuario = 2 and id_usuario="+login_usuario+"");
         query.next();
         pUsuario = query.value(0).toString();
-        int nUsuario= query.value(0).toInt();
+
         query.finish();
 
-        query.exec("SELECT correo_usuario FROM usuario WHERE id_tipo_usuario = 2 ");
+        query.exec("SELECT correo_usuario FROM usuario WHERE id_tipo_usuario = 2  and id_usuario="+login_usuario+"");
         query.next();
         pCorreo = query.value(0).toString();
         query.finish();
 
-        query.exec("select nombre_partido from partido inner join usuario on usuario.id_usuario=partido.usuario_id_usuario and usuario.id_tipo_usuario=2; ");
+        query.exec("select nombre_partido from partido inner join usuario on usuario.id_usuario=partido.usuario_id_usuario and usuario.id_tipo_usuario=2 where"
+                   " id_usuario="+login_usuario+" ");
         query.next();
         pNombre = query.value(0).toString();
         query.finish();
@@ -270,12 +271,12 @@ void MainWindow::on_pushButton_ingresar_clicked()
         QString validaPartido = query.value(2).toString();
         qDebug()<<validaPartido;
 
-        query.exec("select partido.id_partido from partido inner join usuario on usuario.id_usuario=partido.usuario_id_usuario and usuario.id_tipo_usuario=2; ");
+        query.exec("select partido.id_partido from partido inner join usuario on usuario.id_usuario=partido.usuario_id_usuario and usuario.id_tipo_usuario=2 where id_usuario="+login_usuario+"");
         query.next();
         indice = query.value(0).toString();
         query.finish();
 
-        query.exec("select foto_partido from partido where id_partido="+indice+"");
+        query.exec("select foto_partido from partido where id_partido="+indice+"and id_usuario="+login_usuario+"");
         query.next();
         QString ubi = query.value(0).toString();
         query.finish();
@@ -294,23 +295,25 @@ void MainWindow::on_pushButton_ingresar_clicked()
             ui->correoPartido->setText(pCorreo);
         }
 
-        query.exec("SELECT id_usuario FROM usuario WHERE id_tipo_usuario = 3 ");
+        query.exec("SELECT id_usuario FROM usuario WHERE id_tipo_usuario = 3 and id_usuario="+login_usuario+"");
         query.next();
         vUsuario = query.value(0).toString();
         query.finish();
 
-        query.exec("SELECT correo_usuario FROM usuario WHERE id_tipo_usuario = 3 ");
+        query.exec("SELECT correo_usuario FROM usuario WHERE id_tipo_usuario = 3 and id_usuario="+login_usuario+"");
         query.next();
         vCorreo = query.value(0).toString();
         query.finish();
 
-        query.exec("select nombre_votante from votante inner join usuario on usuario.id_usuario=votante.usuario_id_usuario and usuario.id_tipo_usuario=3"
+        query.exec("select nombre_votante from votante inner join usuario on usuario.id_usuario=votante.usuario_id_usuario and usuario.id_tipo_usuario=3 "
+                   "where id_usuario="+login_usuario+""
                    "");
         query.next();
         nombreVotante = query.value(0).toString();
         query.finish();
 
-        query.exec("select ine from votante inner join usuario on usuario.id_usuario=votante.usuario_id_usuario and usuario.id_tipo_usuario=3;");
+        query.exec("select ine from votante inner join usuario on usuario.id_usuario=votante.usuario_id_usuario and usuario.id_tipo_usuario=3 "
+                   "where id_usuario="+login_usuario+"");
         query.next();
         ine = query.value(0).toString();
         query.finish();
