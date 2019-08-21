@@ -1590,27 +1590,10 @@ QAction{
             <property name="spacing">
              <number>20</number>
             </property>
-            <item row="3" column="0">
-             <spacer name="horizontalSpacer_27">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
+            <item row="0" column="3">
+             <widget class="QComboBox" name="comboBox_candidato"/>
             </item>
-            <item row="1" column="1">
-             <widget class="QLabel" name="label_43">
-              <property name="text">
-               <string>Candidato</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="4">
+            <item row="0" column="4">
              <spacer name="horizontalSpacer_28">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -1623,50 +1606,7 @@ QAction{
               </property>
              </spacer>
             </item>
-            <item row="1" column="3">
-             <widget class="QComboBox" name="comboBox_candidato"/>
-            </item>
             <item row="3" column="3">
-             <widget class="QLineEdit" name="lineEdit_Propuesta">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QLabel" name="label_44">
-              <property name="text">
-               <string>Propuesta</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QLabel" name="label_41">
-              <property name="text">
-               <string>Beneficios</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <spacer name="horizontalSpacer_29">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="4" column="3">
              <widget class="QLineEdit" name="lineEdit_Beneficios">
               <property name="minimumSize">
                <size>
@@ -1682,15 +1622,65 @@ QAction{
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
-             <widget class="QLabel" name="label">
+            <item row="3" column="1">
+             <widget class="QLabel" name="label_41">
               <property name="text">
-               <string>Proceso Electoral</string>
+               <string>Beneficios</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="3">
-             <widget class="QComboBox" name="comboBox_proceso_electoral"/>
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_43">
+              <property name="text">
+               <string>Candidato</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="label_44">
+              <property name="text">
+               <string>Propuesta</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <spacer name="horizontalSpacer_27">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="2">
+             <spacer name="horizontalSpacer_29">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="3">
+             <widget class="QLineEdit" name="lineEdit_Propuesta">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>

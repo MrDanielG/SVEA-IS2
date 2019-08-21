@@ -149,6 +149,8 @@ void MainWindow::on_actionCerrar_sesion_triggered()
 {
     ui->stackedWidget->setCurrentIndex(0);
     ui->toolBar_Admin->setVisible(false);
+    ui->lineEdit_usuario->clear();
+    ui->lineEdit_contrasena->clear();
 }
 
 void MainWindow::on_actionVotante_triggered()
@@ -173,12 +175,12 @@ void MainWindow::on_actionCerrar_sesion_2_triggered()
 {
     ui->stackedWidget->setCurrentIndex(0);
     ui->toolBar_Votante->setVisible(false);
+    ui->lineEdit_usuario->clear();
+    ui->lineEdit_contrasena->clear();
 }
 
 void MainWindow::on_actionPartido_triggered()
 {
-
-
     ui->stackedWidget->setCurrentIndex(8);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -186,6 +188,23 @@ void MainWindow::on_actionPartido_triggered()
 
 void MainWindow::on_actionCrear_propuesta_triggered()
 {
+    QString idUsuario = ui->lineEdit_usuario->text();
+    qDebug()<<"ACTION PROPUESTA";
+    QSqlQuery query1(db);
+
+    query1.exec("SELECT partido.id_partido FROM partido INNER JOIN usuario ON partido.usuario_id_usuario = usuario.id_usuario WHERE usuario.id_usuario = "+idUsuario+"");
+    query1.next();
+    QString idPartido = query1.value(0).toString();
+    query1.finish();
+
+    /*AQUI PRRO*/
+    QSqlQuery query(db);
+    query.exec("SELECT candidato.nombre_candidato FROM candidato INNER JOIN partido ON candidato.id_partido = partido.id_partido WHERE partido.id_partido = "+idPartido+"");
+    while (query.next()) {
+        ui->comboBox_candidato->addItem(query.value(0).toString());
+    }
+    query.finish();
+
     ui->stackedWidget->setCurrentIndex(9);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -194,6 +213,8 @@ void MainWindow::on_actionCerrar_sesion_3_triggered()
 {
     ui->stackedWidget->setCurrentIndex(0);
     ui->toolBar_Partido->setVisible(false);
+    ui->lineEdit_usuario->clear();
+    ui->lineEdit_contrasena->clear();
 }
 
 void MainWindow::on_pushButton_ingresar_clicked()
@@ -216,8 +237,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
 
         qDebug()<<login_usuario;
         qDebug()<<login_contra;
-        ui->lineEdit_usuario->clear();
-        ui->lineEdit_contrasena->clear();
+
         QString dbAdminUsuario, nombreVotante, ine, nombrePartido;
         QString dbAdminContra, dbCorreo, vUsuario, pUsuario, vCorreo, pCorreo, pNombre, indice;
 
@@ -442,7 +462,7 @@ void MainWindow::on_pushButton_crearEleccion_clicked()
 
 void MainWindow::on_pushButton_generarUsuarios_clicked()
 {
-    int rand_num;
+    int rand_num = 0;
     qDebug()<<rand_num;
 
     if(!db.isOpen()){
