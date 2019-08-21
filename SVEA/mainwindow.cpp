@@ -103,6 +103,8 @@ void MainWindow::on_actionCrear_eleccion_triggered()
     ui->fechaFinRegistro->setMinimumDate(QDate::currentDate());
     ui->fechaInicioPresentacion->setMinimumDate(QDate::currentDate());
     ui->fechaInicioRegistro->setMinimumDate(QDate::currentDate());
+    ui->horaInicioVotacion->setMinimumTime(QTime::currentTime());
+    ui->horaFinVotacion->setMinimumTime(QTime::currentTime());
 
     ui->stackedWidget->setCurrentIndex(2);
     ui->actionAdministrador->setCheckable(true);
@@ -312,16 +314,58 @@ void MainWindow::on_pushButton_ingresar_clicked()
 void MainWindow::on_pushButton_crearEleccion_clicked()
 {
     QSqlQuery query(db);
+    QDate d1,d2,d3,d4,d5;
+    d1=ui->fechaVotacion->date();
+    d2=ui->fechaFinPresentacion->date();
+    d3=ui->fechaFinRegistro->date();
+    d4=ui->fechaInicioPresentacion->date();
+    d5=ui->fechaInicioRegistro->date();
+    QString h1, h2, id1,id2,id3, id4;
+    h1=ui->horaInicioVotacion->text();
+    h2=ui->horaFinVotacion->text();
 
-//    ui->fechaVotacion->setMinimumDate(QDate::currentDate());
-//    ui->fechaFinPresentacion->setMinimumDate(QDate::currentDate());
-//    ui->fechaFinRegistro->setMinimumDate(QDate::currentDate());
-//    ui->fechaInicioPresentacion->setMinimumDate(QDate::currentDate());
-//    ui->fechaInicioRegistro->setMinimumDate(QDate::currentDate());
-//    //Recuperar Contraseña de Admin
-//    query.exec("SELECT contra_usuario FROM usuario WHERE id_tipo_usuario = 1 ");
-//    query.next();
-//    dbAdminContra = query.value(0).toString();
-//    qDebug()<<dbAdminContra;
-//    query.finish();
+    query.exec("INSERT into registro_propuestas(fehca_inicio,fecha_fin) values("+
+               d5.toString("yyyy.MM.dd")+","+d3.toString("yyyy.MM.dd")+")");
+    query.next();
+    query.finish();
+
+    query.exec("select max(id_registro_propuestas) from registro_propuestas");
+    query.next();
+    id1 = query.value(0).toString();
+    query.finish();
+
+    query.exec("INSERT into presentacion_propuestas(fecha_inicio,fecha_fin) values("+
+               d4.toString("yyyy.MM.dd")+","+d2.toString("yyyy.MM.dd")+")");
+    query.next();
+    query.finish();
+
+    query.exec("select max(id_presentacion_propuestas) from presentacion_propuestas");
+    query.next();
+    id2 = query.value(0).toString();
+    query.finish();
+
+    query.exec("INSERT into votacion(fecha_votacion,hora_inicio,hora_fin) values("+
+               d1.toString("yyyy.MM.dd")+","+h1+","+h2+")");
+    query.next();
+    query.finish();
+
+    query.exec("select max(id_votacion) from votacion");
+    query.next();
+    id3 = query.value(0).toString();
+    query.finish();
+
+    query.exec("INSERT INTO proceso_propuestas(id_registro_propuestas,id_presentacion_propuestas) "
+               "values("+id1+","+id2+")");
+    query.next();
+    query.finish();
+
+    query.exec("select max(id_proceso_propuestas) from proceso_propuestas");
+    query.next();
+    id4 = query.value(0).toString();
+    query.finish();
+
+    query.exec("INSERT INTO proceso_electoral(id_votacion,id_proceso_propuestas) "
+               "values("+id3+","+id4+")");
+    query.next();
+    query.finish();
 }
