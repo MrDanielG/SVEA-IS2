@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     else{
         Modelo1=new QSqlRelationalTableModel(this,db);
-        Modelo1->setTable("partido");
+        Modelo1->setTable("vista_partidos");
         Modelo1->setEditStrategy(QSqlRelationalTableModel::OnManualSubmit);
         Modelo1->select();
         ui->tableView_partidos->setModel(Modelo1);
