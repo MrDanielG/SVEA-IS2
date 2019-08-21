@@ -391,11 +391,14 @@ void MainWindow::on_pushButton_generarUsuarios_clicked()
         return;
     }
     else{
+
+        //Querys
         QSqlQuery query(db);
         QSqlQuery creaUsuario(db);
         QSqlQuery query3(db);
         QSqlQuery query4(db);
 
+        //Genera Usuarios Votantes
         query.exec("SELECT ine FROM vista_votantes");
         while(query.next()){
             QString dbine = query.value(0).toString();
@@ -418,8 +421,35 @@ void MainWindow::on_pushButton_generarUsuarios_clicked()
             //QString dbid = query.value(0).toString();
             query4.finish();
         }
+
+        //Genera Usuarios Partidos
+        query.exec("SELECT id_partido FROM vista_partidos");
+        while(query.next()){
+            QString dbid1 = query.value(0).toString();
+
+            qDebug()<<dbid1;
+
+            rand_num = QRandomGenerator::global()->bounded(999999,9999999);
+            qDebug()<<rand_num;
+
+            creaUsuario.exec("INSERT INTO `usuario`(`contra_usuario`, `correo_usuario`, `id_tipo_usuario`) VALUES ("+QString::number(rand_num)+",'partido@partido.com',2)");
+
+            query3.exec("SELECT id_usuario FROM usuario WHERE contra_usuario = '"+QString::number(rand_num)+"' ");
+            query3.next();
+            QString dbid = query3.value(0).toString();
+            query3.finish();
+
+
+            query4.exec("UPDATE `partido` SET `usuario_id_usuario`= "+dbid+" WHERE id_partido = "+dbid1+" ");
+            query4.next();
+            //QString dbid = query.value(0).toString();
+            query4.finish();
+        }
     }
 
     ui->tableView_votantes->setModel(Modelo2);
     Modelo2->select();
+
+    ui->tableView_partidos->setModel(Modelo1);
+    Modelo1->select();
 }
