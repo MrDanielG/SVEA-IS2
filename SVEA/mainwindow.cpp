@@ -181,6 +181,8 @@ void MainWindow::on_actionCerrar_sesion_2_triggered()
 
 void MainWindow::on_actionPartido_triggered()
 {
+
+
     ui->stackedWidget->setCurrentIndex(8);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -217,7 +219,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
         qDebug()<<login_contra;
 
         QString dbAdminUsuario, nombreVotante, ine, nombrePartido;
-        QString dbAdminContra, dbCorreo, vUsuario, pUsuario, vCorreo, pCorreo;
+        QString dbAdminContra, dbCorreo, vUsuario, pUsuario, vCorreo, pCorreo, pNombre, indice;
 
         QSqlQuery query(db);
 
@@ -249,6 +251,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
         query.exec("SELECT id_usuario FROM usuario WHERE id_tipo_usuario = 2 ");
         query.next();
         pUsuario = query.value(0).toString();
+        int nUsuario= query.value(0).toInt();
         query.finish();
 
         query.exec("SELECT correo_usuario FROM usuario WHERE id_tipo_usuario = 2 ");
@@ -258,7 +261,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
 
         query.exec("select nombre_partido from partido inner join usuario on usuario.id_usuario=partido.usuario_id_usuario and usuario.id_tipo_usuario=2; ");
         query.next();
-        pCorreo = query.value(0).toString();
+        pNombre = query.value(0).toString();
         query.finish();
 
 
@@ -266,11 +269,28 @@ void MainWindow::on_pushButton_ingresar_clicked()
         query.next();
         QString validaPartido = query.value(2).toString();
         qDebug()<<validaPartido;
+
+        query.exec("select partido.id_partido from partido inner join usuario on usuario.id_usuario=partido.usuario_id_usuario and usuario.id_tipo_usuario=2; ");
+        query.next();
+        indice = query.value(0).toString();
+        query.finish();
+
+        query.exec("select foto_partido from partido where id_partido="+indice+"");
+        query.next();
+        QString ubi = query.value(0).toString();
+        query.finish();
+        QPixmap logoPartido(ubi);
+        ui->imagenPartido->setPixmap(logoPartido);
+        //ui->imagenPartido->setMask(logoPartido.mask());
+
+        ui->imagenPartido->show();
+
         if(!validaPartido.isEmpty()){
             //Ui Partido
             cambiarStacked(8);
             ui->toolBar_Partido->setVisible(true);
             ui->nombreUsuarioPartido->setText(pUsuario);
+            ui->nombrePartido->setText(pNombre);
             ui->correoPartido->setText(pCorreo);
         }
 
@@ -284,7 +304,8 @@ void MainWindow::on_pushButton_ingresar_clicked()
         vCorreo = query.value(0).toString();
         query.finish();
 
-        query.exec("select nombre_votante from votante inner join usuario on usuario.id_usuario=votante.usuario_id_usuario and usuario.id_tipo_usuario=3;");
+        query.exec("select nombre_votante from votante inner join usuario on usuario.id_usuario=votante.usuario_id_usuario and usuario.id_tipo_usuario=3"
+                   "");
         query.next();
         nombreVotante = query.value(0).toString();
         query.finish();
@@ -325,15 +346,48 @@ void MainWindow::on_pushButton_crearEleccion_clicked()
     h1=ui->horaInicioVotacion->text();
     h2=ui->horaFinVotacion->text();
 
-    if(ui->horaInicioVotacion>=ui->horaFinVotacion||
-            ui->fechaFinRegistro<ui->fechaInicioRegistro
-            ||ui->fechaFinPresentacion<ui->fechaInicioPresentacion){
+    query.exec("select max(fecha_votacion) from votacion");
+    query.next();
+    QDate limite = query.value(0).toDate();
+    query.finish();
+
+//    if(limite>=d5){
+//        QMessageBox::warning(this,"Proceso en curso","No se puede crear"
+//                                                     " un proceso electoral"
+//                                                     " porque hay otro en curso.");
+//        return;
+//    }
+    if(
+            d3<d5
+            ||d2<d4
+
+            ){
         QMessageBox::warning(this,"Inconsistencia","Las fechas fin no pueden ser"
-                                                   " menores a las de inicio."
-                                                   "La hora fin no puede ser menor"
-                                                   " ni igual a la hora inicio");
+                                                   " menores a las de inicio. "
+
+                                                   );
         return;
     }
+    if((ui->horaInicioVotacion->time())>=(ui->horaFinVotacion->time())){
+        QMessageBox::warning(this,"Inconsistencia",
+                                                   "La hora fin no puede ser menor"
+                                                   " ni igual a la hora inicio. \n"
+                                                   );
+        return;
+    }
+    if( d1<d2||
+            d4<d3
+
+            ){
+        QMessageBox::warning(this,"Inconsistencia",
+                             "La cronología de procesos es: "
+                             "registro de propuestas, presentación"
+                             " de propuestas y votación."
+                                                   );
+        return;
+    }
+
+
 
     query.exec("INSERT into registro_propuestas(fehca_inicio,fecha_fin) values('"+
                d5.toString("yyyy.MM.dd")+"','"+d3.toString("yyyy.MM.dd")+"')");
