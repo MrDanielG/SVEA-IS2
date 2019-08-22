@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //db.setDatabaseName("DRIVER={MySQL ODBC 8.0 Unicode Driver};Server=localhost;uid=root;Database=db_svea;");
     cambiarStacked(0);
+    ui->lineEdit_contrasena->setEchoMode(QLineEdit::Password);
     db.setDatabaseName("qtSVEA");
 
 
@@ -400,6 +401,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
         if(login_usuario == dbAdminUsuario && login_contra == dbAdminContra){
             cambiarStacked(1);
             ui->toolBar_Admin->setVisible(true);
+            ui->toolBar_Admin->setFixedWidth(275);
             ui->usuario_admin->setText(dbAdminUsuario);
             ui->correo_admin->setText(dbCorreo);
         }
@@ -448,6 +450,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
             //Ui Partido
             cambiarStacked(8);
             ui->toolBar_Partido->setVisible(true);
+            ui->toolBar_Partido->setFixedWidth(275);
             ui->nombreUsuarioPartido->setText(pUsuario);
             ui->nombrePartido->setText(pNombre);
             ui->correoPartido->setText(pCorreo);
@@ -484,6 +487,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
             //Ui Votante
             cambiarStacked(5);
             ui->toolBar_Votante->setVisible(true);
+            ui->toolBar_Votante->setFixedWidth(275);
             ui->nombreUsuarioVotante->setText(vUsuario);
             ui->correoVotante->setText(vCorreo);
             ui->nombreVotante->setText(nombreVotante);
