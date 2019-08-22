@@ -18,10 +18,15 @@
     <normaloff>:/new/prefix1/inicio.png</normaloff>:/new/prefix1/inicio.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QToolBar {
-    background: white;
-    spacing: 3px; /* spacing between items in the tool bar */
+   <string notr="true">QWidget#centralWidget, #stackedWidget, #page_login{
+	background: white;
 }
+QToolBar {
+    background: #90cbff;
+    spacing: 10px; /* spacing between items in the tool bar */
+}
+
+QToolButton {}
 
 QToolBar::handle {
     image: url(handle.png);
@@ -43,7 +48,8 @@ QPushButton{
 	border-radius: 3px;
 padding: 5px;
 font: 10pt;
-}</string>
+}
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -75,6 +81,9 @@ font: 10pt;
             </property>
             <property name="scaledContents">
              <bool>true</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -110,6 +119,12 @@ font: 10pt;
             </item>
             <item alignment="Qt::AlignHCenter">
              <widget class="QLineEdit" name="lineEdit_usuario">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>25</height>
+               </size>
+              </property>
               <property name="maximumSize">
                <size>
                 <width>200</width>
@@ -132,6 +147,12 @@ font: 10pt;
             </item>
             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
              <widget class="QLineEdit" name="lineEdit_contrasena">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>25</height>
+               </size>
+              </property>
               <property name="maximumSize">
                <size>
                 <width>200</width>
@@ -170,6 +191,12 @@ font: 10pt;
             </item>
             <item alignment="Qt::AlignHCenter">
              <widget class="QPushButton" name="pushButton_ingresar">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>30</height>
+               </size>
+              </property>
               <property name="maximumSize">
                <size>
                 <width>150</width>
@@ -818,7 +845,7 @@ font: 10pt;
        <layout class="QHBoxLayout" name="horizontalLayout_19">
         <item>
          <layout class="QGridLayout" name="gridLayout_7">
-          <item row="7" column="0">
+          <item row="8" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_20">
             <property name="topMargin">
              <number>20</number>
@@ -863,20 +890,7 @@ font: 10pt;
             </item>
            </layout>
           </item>
-          <item row="3" column="0">
-           <spacer name="verticalSpacer_19">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="5" column="0">
+          <item row="6" column="0">
            <spacer name="verticalSpacer_20">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -889,8 +903,8 @@ font: 10pt;
             </property>
            </spacer>
           </item>
-          <item row="9" column="0">
-           <spacer name="verticalSpacer_18">
+          <item row="3" column="0">
+           <spacer name="verticalSpacer_19">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -915,11 +929,37 @@ font: 10pt;
             </property>
            </widget>
           </item>
+          <item row="10" column="0">
+           <spacer name="verticalSpacer_18">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
           <item row="4" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_18">
             <property name="topMargin">
              <number>20</number>
             </property>
+            <item>
+             <spacer name="horizontalSpacer_30">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
             <item>
              <widget class="QTableView" name="tableView_validarPropuesta">
               <property name="editTriggers">
@@ -932,6 +972,19 @@ font: 10pt;
                <enum>QAbstractItemView::SingleSelection</enum>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_31">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>
@@ -1255,7 +1308,40 @@ font: 10pt;
            </spacer>
           </item>
           <item>
-           <widget class="QTableView" name="vista_propuestas"/>
+           <layout class="QHBoxLayout" name="horizontalLayout_21">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <spacer name="horizontalSpacer_33">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QTableView" name="vista_propuestas"/>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_32">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="verticalSpacer_29">
@@ -1788,21 +1874,33 @@ font: 10pt;
    </property>
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>150</width>
      <height>0</height>
     </size>
    </property>
    <property name="font">
     <font>
-     <family>Bahnschrift</family>
-     <pointsize>14</pointsize>
+     <family>Calibri Light</family>
+     <pointsize>18</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
    <property name="movable">
     <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
    </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonIconOnly</enum>
@@ -1823,11 +1921,26 @@ font: 10pt;
    <addaction name="actionCerrar_sesion"/>
   </widget>
   <widget class="QToolBar" name="toolBar_Votante">
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
    <property name="movable">
     <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
    </property>
    <attribute name="toolBarArea">
     <enum>LeftToolBarArea</enum>
@@ -1841,11 +1954,26 @@ font: 10pt;
    <addaction name="actionCerrar_sesion_2"/>
   </widget>
   <widget class="QToolBar" name="toolBar_Partido">
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
    <property name="movable">
     <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
    </property>
    <attribute name="toolBarArea">
     <enum>LeftToolBarArea</enum>
@@ -1858,17 +1986,33 @@ font: 10pt;
    <addaction name="actionCerrar_sesion_3"/>
   </widget>
   <action name="actionAdministrador">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="checked">
     <bool>false</bool>
    </property>
    <property name="enabled">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/new/prefix1/admin-icon.png</normaloff>:/new/prefix1/admin-icon.png</iconset>
+   </property>
    <property name="text">
     <string>Administrador</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionCrear_eleccion">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="checked">
     <bool>false</bool>
    </property>
@@ -1877,58 +2021,157 @@ font: 10pt;
    </property>
    <property name="font">
     <font>
-     <pointsize>8</pointsize>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
     </font>
    </property>
   </action>
   <action name="actionGenerarUsuarios">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Generar usuarios</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionValidar_propuestas">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Validar propuestas</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionCerrar_sesion">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Cerrar sesión</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionVotante">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/new/prefix1/votante.png</normaloff>:/new/prefix1/votante.png</iconset>
+   </property>
    <property name="text">
     <string>Votante</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionPropuestas">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Propuestas</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionVotar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Votar</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionCerrar_sesion_2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Cerrar sesión</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionPartido">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/new/prefix1/partidos.png</normaloff>:/new/prefix1/partidos.png</iconset>
+   </property>
    <property name="text">
     <string>Partido</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionCrear_propuesta">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Crear propuesta</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionCerrar_sesion_3">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Cerrar sesión</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
    </property>
   </action>
  </widget>
