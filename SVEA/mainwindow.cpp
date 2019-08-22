@@ -6,7 +6,7 @@
 #include "QImage"
 #include <QTranslator>
 #include <QStandardItemModel>
-
+#include "resultados.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -61,7 +61,7 @@ MainWindow::MainWindow(QWidget *parent) :
         Modelo4->setTable("voto");
         Modelo4->setEditStrategy(QSqlRelationalTableModel::OnManualSubmit);
         Modelo4->select();
-        ui->tableView_voto->setModel(Modelo4);
+
 
 
         Modelo4->setHeaderData(Modelo4->fieldIndex("pa.foto_partido"),Qt::Horizontal,tr("Foto partido"));
@@ -169,7 +169,31 @@ void MainWindow::on_actionPropuestas_triggered()
 void MainWindow::on_actionVotar_triggered()
 {
     ui->stackedWidget->setCurrentIndex(7);
-    ui->actionAdministrador->setCheckable(true);
+    if(!db.isOpen()){
+        qDebug() <<"Error en la conexion";
+        return;
+    }
+    else{
+
+        //Querys
+//        QPixmap logoPartido(ubi);
+//            logoPartido.scaledToHeight(200);
+//            logoPartido.scaledToWidth(200);
+//        ui->imagenPartido->setPixmap(logoPartido);
+//        //ui->imagenPartido->setMask(logoPartido.mask());
+
+//        ui->imagenPartido->show();
+        QSqlQuery query(db);
+        query.exec("SELECT c.nombre_candidato FROM candidato as c inner join"
+                   " partido as p on p.id_partido=c.id_partido"
+                   " WHERE id=1");
+        query.next();
+        QString nameCandidato = query.value(0).toString();
+        query.finish();
+
+        //ui->labe
+
+    }
 }
 
 void MainWindow::on_actionCerrar_sesion_2_triggered()
