@@ -176,23 +176,134 @@ void MainWindow::on_actionVotar_triggered()
     else{
 
         //Querys
-//        QPixmap logoPartido(ubi);
-//            logoPartido.scaledToHeight(200);
-//            logoPartido.scaledToWidth(200);
-//        ui->imagenPartido->setPixmap(logoPartido);
-//        //ui->imagenPartido->setMask(logoPartido.mask());
+         QSqlQuery query(db);
+        QString i1, i2, i3;
 
-//        ui->imagenPartido->show();
-        QSqlQuery query(db);
+            query.exec("SELECT p.foto_partido FROM candidato as c inner join"
+                       " partido as p on p.id_partido=c.id_partido"
+                       " WHERE p.id_partido=1");
+            query.next();
+            i1 = query.value(0).toString();
+            query.finish();
+
+            query.exec("SELECT p.foto_partido FROM candidato as c inner join"
+                       " partido as p on p.id_partido=c.id_partido"
+                       " WHERE p.id_partido=2");
+            query.next();
+            i2 = query.value(0).toString();
+            query.finish();
+
+            query.exec("SELECT p.foto_partido FROM candidato as c inner join"
+                       " partido as p on p.id_partido=c.id_partido"
+                       " WHERE p.id_partido=3");
+            query.next();
+            i3 = query.value(0).toString();
+            query.finish();
+
+        QPixmap logoPartido1(i1);
+            logoPartido1.scaledToHeight(200);
+            logoPartido1.scaledToWidth(200);
+        ui->label_img1->setPixmap(logoPartido1);
+        //ui->imagenPartido->setMask(logoPartido.mask());
+
+        ui->label_img1->show();
+
+        QPixmap logoPartido2(i2);
+            logoPartido2.scaledToHeight(200);
+            logoPartido2.scaledToWidth(200);
+        ui->label_img2->setPixmap(logoPartido2);
+        //ui->imagenPartido->setMask(logoPartido.mask());
+
+        ui->label_img2->show();
+
+        QPixmap logoPartido3(i3);
+            logoPartido3.scaledToHeight(200);
+            logoPartido3.scaledToWidth(200);
+        ui->label_img3->setPixmap(logoPartido3);
+        //ui->imagenPartido->setMask(logoPartido.mask());
+
+        ui->label_img3->show();
+
         query.exec("SELECT c.nombre_candidato FROM candidato as c inner join"
                    " partido as p on p.id_partido=c.id_partido"
-                   " WHERE id=1");
+                   " WHERE p.id_partido=1");
         query.next();
         QString nameCandidato = query.value(0).toString();
+
         query.finish();
 
-        //ui->labe
+        ui->radioButton_1->setText(nameCandidato);
 
+        query.exec("SELECT c.nombre_candidato FROM candidato as c inner join"
+                   " partido as p on p.id_partido=c.id_partido"
+                   " WHERE p.id_partido=2");
+        query.next();
+        QString nameCandidato2 = query.value(0).toString();
+        query.finish();
+
+        ui->radioButton_2->setText(nameCandidato2);
+
+        query.exec("SELECT c.nombre_candidato FROM candidato as c inner join"
+                   " partido as p on p.id_partido=c.id_partido"
+                   " WHERE p.id_partido=3");
+        query.next();
+        QString nameCandidato3 = query.value(0).toString();
+        query.finish();
+
+        ui->radioButton_3->setText(nameCandidato3);
+
+
+        query.exec("SELECT c.id_candidato FROM candidato as c inner join"
+                   " partido as p on p.id_partido=c.id_partido"
+                   " WHERE p.id_partido=1");
+        query.next();
+        pr1 = query.value(0).toInt();
+
+        query.finish();
+
+        query.exec("SELECT c.id_candidato FROM candidato as c inner join"
+                   " partido as p on p.id_partido=c.id_partido"
+                   " WHERE p.id_partido=2");
+        query.next();
+        pr2 = query.value(0).toInt();
+        query.finish();
+
+
+        query.exec("SELECT c.id_candidato FROM candidato as c inner join"
+                   " partido as p on p.id_partido=c.id_partido"
+                   " WHERE p.id_partido=3");
+        query.next();
+        pr3 = query.value(0).toInt();
+        query.finish();
+
+
+
+        QString nc1, nc2, nc3;
+
+            query.exec("SELECT p.nombre_partido FROM candidato as c inner join"
+                       " partido as p on p.id_partido=c.id_partido"
+                       " WHERE p.id_partido=1");
+            query.next();
+            nc1 = query.value(0).toString();
+            query.finish();
+
+            query.exec("SELECT p.nombre_partido FROM candidato as c inner join"
+                       " partido as p on p.id_partido=c.id_partido"
+                       " WHERE p.id_partido=2");
+            query.next();
+            nc2 = query.value(0).toString();
+            query.finish();
+
+            query.exec("SELECT p.nombre_partido FROM candidato as c inner join"
+                       " partido as p on p.id_partido=c.id_partido"
+                       " WHERE p.id_partido=3");
+            query.next();
+            nc3 = query.value(0).toString();
+            query.finish();
+
+        ui->label_p1->setText(nc1);
+        ui->label_p2->setText(nc2);
+        ui->label_p2->setText(nc3);
     }
 }
 
@@ -378,6 +489,7 @@ void MainWindow::on_pushButton_ingresar_clicked()
             ui->nombreVotante->setText(nombreVotante);
             ui->INE->setText(ine);
         }
+        INEVotante=ine.toInt();
 
     }
 }
@@ -627,4 +739,40 @@ void MainWindow::on_pushButton_4_clicked()
         ui->vista_propuestas->setModel(Modelo3);
         Modelo3->select();
 
+}
+
+void MainWindow::on_radioButton_1_clicked()
+{
+    votoCandidato=pr1;
+}
+
+void MainWindow::on_radioButton_2_clicked()
+{
+    votoCandidato=pr2;
+}
+
+void MainWindow::on_radioButton_3_clicked()
+{
+    votoCandidato=pr3;
+}
+
+void MainWindow::on_pushButton_votar_clicked()
+{
+    QSqlQuery queryV(db);
+    QSqlQuery queryPE(db);
+
+    queryPE.exec("SELECT pe.id_proceso_electoral FROM proceso_electoral as pe inner join votacion as v on pe.id_votacion=v.id_votacion where v.fecha_votacion='2019-08-21'");
+    queryPE.next();
+    QString IDProceso = queryPE.value(0).toString();
+
+    queryPE.finish();
+
+    qDebug() << IDProceso << " " << votoCandidato << " " << INEVotante;
+
+        queryV.exec("insert into boleta(votante_ine, candidato_id_candidato,id_proceso_electoral) "
+                    "values("+QString::number(INEVotante)+","+QString::number(votoCandidato)+","+IDProceso+
+                    ")"
+                    );
+        queryV.next();
+        queryV.finish();
 }

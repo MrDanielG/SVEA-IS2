@@ -59,6 +59,14 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_radioButton_1_clicked();
+
+    void on_radioButton_2_clicked();
+
+    void on_radioButton_3_clicked();
+
+    void on_pushButton_votar_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "ConexionPrincipal");
@@ -67,6 +75,8 @@ private:
     QSqlRelationalTableModel * Modelo3;//vista
     QSqlRelationalTableModel * Modelo4;//pedidos
     QSqlRelationalTableModel * Modelo5;//articulos pedidos
+    int votoCandidato;
+    int pr1,pr2,pr3, INEVotante;
 };
 
 #endif // MAINWINDOW_H

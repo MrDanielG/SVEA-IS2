@@ -1502,7 +1502,7 @@ font: 10pt;
                  <widget class="QLabel" name="label_p2">
                   <property name="minimumSize">
                    <size>
-                    <width>10</width>
+                    <width>200</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -1520,14 +1520,14 @@ font: 10pt;
                    </font>
                   </property>
                   <property name="text">
-                   <string>Partido Acción Nacional</string>
+                   <string> </string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_c2">
+                 <widget class="QRadioButton" name="radioButton_2">
                   <property name="text">
-                   <string>Ricardo Anaya Cortés</string>
+                   <string>RadioButton</string>
                   </property>
                  </widget>
                 </item>
@@ -1598,14 +1598,14 @@ font: 10pt;
                    </font>
                   </property>
                   <property name="text">
-                   <string>Partido Revolucionario&lt;br&gt; Institucional</string>
+                   <string> </string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_c1">
+                 <widget class="QRadioButton" name="radioButton_1">
                   <property name="text">
-                   <string>José Antonio Meade</string>
+                   <string>RadioButton</string>
                   </property>
                  </widget>
                 </item>
@@ -1676,14 +1676,14 @@ font: 10pt;
                    </font>
                   </property>
                   <property name="text">
-                   <string>Partido de la Revolución&lt;br&gt; Democrática</string>
+                   <string> </string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_c3">
+                 <widget class="QRadioButton" name="radioButton_3">
                   <property name="text">
-                   <string>Andres Manuel López Obrador</string>
+                   <string>RadioButton</string>
                   </property>
                  </widget>
                 </item>
@@ -1758,7 +1758,7 @@ font: 10pt;
            </spacer>
           </item>
           <item alignment="Qt::AlignHCenter">
-           <widget class="QPushButton" name="pushButton_8">
+           <widget class="QPushButton" name="pushButton_votar">
             <property name="minimumSize">
              <size>
               <width>200</width>
