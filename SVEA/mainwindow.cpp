@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit_contrasena->setEchoMode(QLineEdit::Password);
     db.setDatabaseName("qtSVEA");
     Resultados r;
-    r.exec();
+    //r.exec();
 
     if(!db.open()){
         QMessageBox::critical(this,"Error",db.lastError().text());
@@ -780,4 +780,10 @@ void MainWindow::on_pushButton_votar_clicked()
                     );
         queryV.next();
         queryV.finish();
+}
+
+void MainWindow::on_actionResultados_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(10);
+    ui->actionResultados->setCheckable(true);
 }
