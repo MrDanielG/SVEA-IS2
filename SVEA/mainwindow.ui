@@ -64,7 +64,7 @@ QPushButton{
 	border-width: 0px;
 	border-radius: 3px;
 padding: 5px;
-font: 10pt;
+font: 13pt;
 }
 </string>
   </property>
@@ -222,7 +222,10 @@ font: 10pt;
               </property>
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="text">
@@ -258,7 +261,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -339,7 +342,7 @@ font: 10pt;
              <widget class="QLabel" name="label_usuarioA">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="text">
@@ -349,6 +352,11 @@ font: 10pt;
             </item>
             <item>
              <widget class="QLabel" name="usuario_admin">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>admin</string>
               </property>
@@ -391,7 +399,7 @@ font: 10pt;
              <widget class="QLabel" name="label_correoA">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="text">
@@ -401,6 +409,11 @@ font: 10pt;
             </item>
             <item>
              <widget class="QLabel" name="correo_admin">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>admin@dominio.com</string>
               </property>
@@ -447,7 +460,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -621,6 +634,9 @@ font: 10pt;
               <height>16777215</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>Crear elección</string>
             </property>
@@ -675,6 +691,7 @@ font: 10pt;
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
+                <italic>true</italic>
                </font>
               </property>
               <property name="text">
@@ -749,7 +766,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -770,6 +787,9 @@ font: 10pt;
               <width>600</width>
               <height>16777215</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
              <string>Generar usuarios</string>
@@ -799,6 +819,12 @@ font: 10pt;
             </item>
             <item>
              <widget class="QTableView" name="tableView_votantes">
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>225</height>
+               </size>
+              </property>
               <property name="editTriggers">
                <set>QAbstractItemView::NoEditTriggers</set>
               </property>
@@ -828,6 +854,12 @@ font: 10pt;
             </item>
             <item>
              <widget class="QTableView" name="tableView_partidos">
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>225</height>
+               </size>
+              </property>
               <property name="editTriggers">
                <set>QAbstractItemView::NoEditTriggers</set>
               </property>
@@ -881,6 +913,9 @@ font: 10pt;
                 <height>16777215</height>
                </size>
               </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="text">
                <string>Aceptar</string>
               </property>
@@ -899,6 +934,9 @@ font: 10pt;
                 <width>200</width>
                 <height>200</height>
                </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="text">
                <string>Rechazar</string>
@@ -938,7 +976,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -979,6 +1017,12 @@ font: 10pt;
             </item>
             <item>
              <widget class="QTableView" name="tableView_validarPropuesta">
+              <property name="minimumSize">
+               <size>
+                <width>700</width>
+                <height>250</height>
+               </size>
+              </property>
               <property name="editTriggers">
                <set>QAbstractItemView::NoEditTriggers</set>
               </property>
@@ -1048,7 +1092,7 @@ font: 10pt;
              <widget class="QLabel" name="label_10">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1058,6 +1102,11 @@ font: 10pt;
             </item>
             <item>
              <widget class="QLabel" name="nombreUsuarioVotante">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>u</string>
               </property>
@@ -1100,7 +1149,7 @@ font: 10pt;
              <widget class="QLabel" name="label_12">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1110,6 +1159,11 @@ font: 10pt;
             </item>
             <item>
              <widget class="QLabel" name="correoVotante">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>c</string>
               </property>
@@ -1178,7 +1232,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -1208,7 +1262,7 @@ font: 10pt;
              <widget class="QLabel" name="label_15">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1218,6 +1272,11 @@ font: 10pt;
             </item>
             <item>
              <widget class="QLabel" name="INE">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>i</string>
               </property>
@@ -1260,7 +1319,7 @@ font: 10pt;
              <widget class="QLabel" name="label_25">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1270,6 +1329,11 @@ font: 10pt;
             </item>
             <item>
              <widget class="QLabel" name="nombreVotante">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>n</string>
               </property>
@@ -1303,7 +1367,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -1343,7 +1407,20 @@ font: 10pt;
              </spacer>
             </item>
             <item>
-             <widget class="QTableView" name="vista_propuestas"/>
+             <widget class="QTableView" name="vista_propuestas">
+              <property name="minimumSize">
+               <size>
+                <width>700</width>
+                <height>275</height>
+               </size>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="dragDropOverwriteMode">
+               <bool>false</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="horizontalSpacer_32">
@@ -1386,7 +1463,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -1787,6 +1864,9 @@ font: 10pt;
               <height>16777215</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>Votar</string>
             </property>
@@ -1861,7 +1941,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -1904,7 +1984,7 @@ font: 10pt;
              <widget class="QLabel" name="label_18">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1914,6 +1994,11 @@ font: 10pt;
             </item>
             <item>
              <widget class="QLabel" name="nombreUsuarioPartido">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>p</string>
               </property>
@@ -1956,7 +2041,7 @@ font: 10pt;
              <widget class="QLabel" name="label_20">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="text">
@@ -1966,6 +2051,11 @@ font: 10pt;
             </item>
             <item>
              <widget class="QLabel" name="correoPartido">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>partido@dominio.com</string>
               </property>
@@ -2008,7 +2098,7 @@ font: 10pt;
              <widget class="QLabel" name="label_23">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="text">
@@ -2018,6 +2108,11 @@ font: 10pt;
             </item>
             <item>
              <widget class="QLabel" name="nombrePartido">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>TextLabel</string>
               </property>
@@ -2051,7 +2146,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -2111,6 +2206,11 @@ font: 10pt;
             </item>
             <item row="3" column="1">
              <widget class="QLabel" name="label_41">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>Beneficios</string>
               </property>
@@ -2118,6 +2218,11 @@ font: 10pt;
             </item>
             <item row="0" column="1">
              <widget class="QLabel" name="label_43">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>Candidato</string>
               </property>
@@ -2125,6 +2230,11 @@ font: 10pt;
             </item>
             <item row="2" column="1">
              <widget class="QLabel" name="label_44">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>Propuesta</string>
               </property>
@@ -2198,6 +2308,9 @@ font: 10pt;
               <height>16777215</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>Crear propuesta</string>
             </property>
@@ -2229,7 +2342,7 @@ font: 10pt;
             <property name="font">
              <font>
               <family>Bahnschrift</family>
-              <pointsize>24</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -2290,7 +2403,7 @@ font: 10pt;
            <widget class="QLabel" name="label">
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <pointsize>12</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
