@@ -222,9 +222,6 @@ font: 10pt;
               <property name="font">
                <font>
                 <pointsize>10</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
                </font>
               </property>
               <property name="text">
@@ -1538,7 +1535,7 @@ font: 10pt;
                    </font>
                   </property>
                   <property name="text">
-                   <string/>
+                   <string> </string>
                   </property>
                  </widget>
                 </item>
@@ -1616,7 +1613,7 @@ font: 10pt;
                    </font>
                   </property>
                   <property name="text">
-                   <string/>
+                   <string> </string>
                   </property>
                  </widget>
                 </item>
@@ -1694,7 +1691,7 @@ font: 10pt;
                    </font>
                   </property>
                   <property name="text">
-                   <string/>
+                   <string> </string>
                   </property>
                  </widget>
                 </item>
@@ -2232,7 +2229,7 @@ font: 10pt;
      <x>0</x>
      <y>0</y>
      <width>1430</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -2242,14 +2239,14 @@ font: 10pt;
     <bool>true</bool>
    </property>
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>275</width>
      <height>0</height>
     </size>
    </property>
@@ -2310,7 +2307,7 @@ font: 10pt;
   <widget class="QToolBar" name="toolBar_Votante">
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>275</width>
      <height>0</height>
     </size>
    </property>
@@ -2344,13 +2341,12 @@ font: 10pt;
    <addaction name="actionVotante"/>
    <addaction name="actionPropuestas"/>
    <addaction name="actionVotar"/>
-   <addaction name="actionResultados"/>
    <addaction name="actionCerrar_sesion_2"/>
   </widget>
   <widget class="QToolBar" name="toolBar_Partido">
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>275</width>
      <height>0</height>
     </size>
    </property>
@@ -2560,11 +2556,6 @@ font: 10pt;
      <family>Calibri</family>
      <pointsize>11</pointsize>
     </font>
-   </property>
-  </action>
-  <action name="actionResultados">
-   <property name="text">
-    <string>Resultados</string>
    </property>
   </action>
  </widget>

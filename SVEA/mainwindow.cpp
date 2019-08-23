@@ -7,8 +7,6 @@
 #include <QTranslator>
 #include <QStandardItemModel>
 #include "resultados.h"
-//#include "resultados.cpp"
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -161,15 +159,6 @@ void MainWindow::on_actionVotante_triggered()
 {
     ui->stackedWidget->setCurrentIndex(5);
     ui->actionAdministrador->setCheckable(true);
-    ui->toolBar_Votante->actions().at(3)->setVisible(false);
-
-    QSqlQuery query(db);
-    query.exec("SELECT max(fecha_votacion) FROM votacion");
-    query.next();
-    QDate fechaMax = query.value(0).toDate();
-    if(fechaMax < QDate::currentDate()){
-        ui->toolBar_Votante->actions().at(3)->setVisible(true);
-    }
 }
 
 void MainWindow::on_actionPropuestas_triggered()
@@ -790,9 +779,4 @@ void MainWindow::on_pushButton_votar_clicked()
                     );
         queryV.next();
         queryV.finish();
-}
-
-void MainWindow::on_actionResultados_triggered()
-{
-
 }

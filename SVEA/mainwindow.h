@@ -67,8 +67,6 @@ private slots:
 
     void on_pushButton_votar_clicked();
 
-    void on_actionResultados_triggered();
-
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "ConexionPrincipal");
