@@ -343,7 +343,7 @@ void MainWindow::on_actionVotar_triggered()
 
         ui->label_p1->setText(nc1);
         ui->label_p2->setText(nc2);
-        ui->label_p2->setText(nc3);
+        ui->label_p3->setText(nc3);
     }
 }
 
@@ -686,7 +686,7 @@ void MainWindow::on_pushButton_generarUsuarios_clicked()
             rand_num = QRandomGenerator::global()->bounded(999999,9999999);
             qDebug()<<rand_num;
 
-            creaUsuario.exec("INSERT INTO `usuario`(`contra_usuario`, `correo_usuario`, `id_tipo_usuario`) VALUES ("+QString::number(rand_num)+",'votante@votante.com',2)");
+            creaUsuario.exec("INSERT INTO `usuario`(`contra_usuario`, `correo_usuario`, `id_tipo_usuario`) VALUES ("+QString::number(rand_num)+",'votante@votante.com',3)");
 
             query3.exec("SELECT id_usuario FROM usuario WHERE contra_usuario = '"+QString::number(rand_num)+"' ");
             query3.next();
