@@ -67,6 +67,36 @@ MainWindow::MainWindow(QWidget *parent) :
         Modelo4->setHeaderData(Modelo4->fieldIndex("pa.foto_partido"),Qt::Horizontal,tr("Foto partido"));
         Modelo4->setHeaderData(Modelo4->fieldIndex("c.nombre_candidato"),Qt::Horizontal,tr("Candidato"));
         Modelo4->setHeaderData(Modelo4->fieldIndex("pa.nombre_partido"),Qt::Horizontal,tr("Partido"));
+
+
+        QSqlQuery query(db);
+        query.exec("select max(fecha_votacion) from votacion");
+        query.next();
+        fV = query.value(0).toDate();
+        query.finish();
+
+        query.exec("select max(fehca_inicio) from registro_propuestas");
+        query.next();
+        fiR = query.value(0).toDate();
+        query.finish();
+
+        query.exec("select max(fecha_fin) from registro_propuestas");
+        query.next();
+        ftR = query.value(0).toDate();
+        query.finish();
+
+        query.exec("select max(fecha_inicio) from presentacion_propuestas");
+        query.next();
+        fiP = query.value(0).toDate();
+        query.finish();
+
+        query.exec("select max(fecha_final) from presentacion_propuestas");
+        query.next();
+        ftP = query.value(0).toDate();
+        query.finish();
+
+        qDebug() << fiR<<" " << ftR<<" " << fiP<<" " << ftP<<" "<<fV;
+
     }
 }
 
@@ -93,6 +123,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionAdministrador_triggered()
 {
+
     ui->stackedWidget->setCurrentIndex(1);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -145,6 +176,8 @@ void MainWindow::on_actionGenerarUsuarios_triggered()
 void MainWindow::on_actionValidar_propuestas_triggered()
 {
     ui->stackedWidget->setCurrentIndex(4);
+    Modelo3->setFilter("");
+    Modelo3->select();
     ui->actionAdministrador->setCheckable(true);
 }
 
@@ -158,6 +191,9 @@ void MainWindow::on_actionCerrar_sesion_triggered()
 
 void MainWindow::on_actionVotante_triggered()
 {
+
+
+
     ui->stackedWidget->setCurrentIndex(5);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -165,6 +201,8 @@ void MainWindow::on_actionVotante_triggered()
 void MainWindow::on_actionPropuestas_triggered()
 {
     ui->stackedWidget->setCurrentIndex(6);
+    Modelo3->setFilter("validada=1");
+    Modelo3->select();
     ui->actionAdministrador->setCheckable(true);
 }
 
@@ -319,6 +357,7 @@ void MainWindow::on_actionCerrar_sesion_2_triggered()
 
 void MainWindow::on_actionPartido_triggered()
 {
+
     ui->stackedWidget->setCurrentIndex(8);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -495,6 +534,20 @@ void MainWindow::on_pushButton_ingresar_clicked()
             ui->INE->setText(ine);
         }
         INEVotante=ine.toInt();
+
+        if(fiR <= QDate::currentDate()&& ftR >=QDate::currentDate()){
+            ui->toolBar_Admin->actions().at(3)->setVisible(true);
+            ui->toolBar_Partido->actions().at(1)->setVisible(true);
+        }
+        if(fiP <= QDate::currentDate()&& ftP >= QDate::currentDate()){
+            ui->toolBar_Votante->actions().at(1)->setVisible(true);
+        }
+        if(fV == QDate::currentDate()){
+            ui->toolBar_Votante->actions().at(2)->setVisible(true);
+        }
+        if( QDate::currentDate()>fV){
+            ui->toolBar_Votante->actions().at(3)->setVisible(true);
+        }
 
     }
 }

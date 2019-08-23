@@ -79,6 +79,7 @@ private:
     QSqlRelationalTableModel * Modelo5;//articulos pedidos
     int votoCandidato;
     int pr1,pr2,pr3, INEVotante;
+    QDate fiR, ftR, fiP, ftP, fV;
 };
 
 #endif // MAINWINDOW_H

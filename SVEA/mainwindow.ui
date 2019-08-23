@@ -228,6 +228,9 @@ font: 13pt;
                 <bold>false</bold>
                </font>
               </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="text">
                <string>Ingresar</string>
               </property>
@@ -2335,7 +2338,7 @@ font: 13pt;
       </widget>
       <widget class="QWidget" name="page">
        <layout class="QVBoxLayout" name="verticalLayout_13">
-        <item>
+        <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="label_46">
           <property name="font">
            <font>
@@ -2459,7 +2462,7 @@ font: 13pt;
      <x>0</x>
      <y>0</y>
      <width>1430</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -2682,6 +2685,9 @@ font: 13pt;
      <pointsize>11</pointsize>
     </font>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
   </action>
   <action name="actionCerrar_sesion">
    <property name="checkable">
@@ -2724,6 +2730,9 @@ font: 13pt;
      <pointsize>11</pointsize>
     </font>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
   </action>
   <action name="actionVotar">
    <property name="checkable">
@@ -2737,6 +2746,9 @@ font: 13pt;
      <family>Calibri</family>
      <pointsize>11</pointsize>
     </font>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
   </action>
   <action name="actionCerrar_sesion_2">
@@ -2780,6 +2792,9 @@ font: 13pt;
      <pointsize>11</pointsize>
     </font>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
   </action>
   <action name="actionCerrar_sesion_3">
    <property name="checkable">
@@ -2798,6 +2813,9 @@ font: 13pt;
   <action name="actionResultados">
    <property name="text">
     <string>Resultados</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
   </action>
  </widget>
