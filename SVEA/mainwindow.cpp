@@ -136,6 +136,8 @@ void MainWindow::on_actionGenerarUsuarios_triggered()
 
     }
 
+
+
     ui->stackedWidget->setCurrentIndex(3);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -598,6 +600,10 @@ void MainWindow::on_pushButton_crearEleccion_clicked()
                "values("+id3+","+id4+")");
     query.next();
     query.finish();
+
+    QMessageBox msgBox;
+    msgBox.setText("Elección Correctamente Creada");
+    msgBox.exec();
 }
 
 void MainWindow::on_pushButton_generarUsuarios_clicked()
@@ -666,6 +672,10 @@ void MainWindow::on_pushButton_generarUsuarios_clicked()
         }
     }
 
+    QMessageBox msgBox;
+    msgBox.setText("Se generaron los usuarios correctamente");
+    msgBox.exec();
+
     ui->tableView_votantes->setModel(Modelo2);
     Modelo2->select();
 
@@ -704,6 +714,10 @@ void MainWindow::on_pushButton_crearPropuesta_clicked()
                 ui->lineEdit_Propuesta->clear();
                 ui->lineEdit_Beneficios->clear();
 
+                QMessageBox msgBox;
+                msgBox.setText("Propuesta Mandada a Revision");
+                msgBox.exec();
+
 }
 
 void MainWindow::on_pushButton_3_clicked()
@@ -723,6 +737,10 @@ void MainWindow::on_pushButton_3_clicked()
         ui->vista_propuestas->setModel(Modelo3);
         Modelo3->select();
 
+        QMessageBox msgBox;
+        msgBox.setText("Propuesta Validada");
+        msgBox.exec();
+
 }
 
 void MainWindow::on_pushButton_4_clicked()
@@ -741,6 +759,10 @@ void MainWindow::on_pushButton_4_clicked()
         ui->tableView_validarPropuesta->setModel(Modelo3);
         ui->vista_propuestas->setModel(Modelo3);
         Modelo3->select();
+
+        QMessageBox msgBox;
+        msgBox.setText("Propuesta Rechazada");
+        msgBox.exec();
 
 }
 
@@ -778,6 +800,10 @@ void MainWindow::on_pushButton_votar_clicked()
                     );
         queryV.next();
         queryV.finish();
+
+        QMessageBox msgBox;
+        msgBox.setText("Voto Correctamente Registrado");
+        msgBox.exec();
 }
 
 void MainWindow::on_actionResultados_triggered()
