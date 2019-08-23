@@ -95,6 +95,8 @@ MainWindow::MainWindow(QWidget *parent) :
         ftP = query.value(0).toDate();
         query.finish();
 
+        qDebug() << fiR<<" " << ftR<<" " << fiP<<" " << ftP<<" "<<fV;
+
     }
 }
 
@@ -121,9 +123,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionAdministrador_triggered()
 {
-    if(ftR < QDate::currentDate()){
-        ui->toolBar_Admin->actions().at(3)->setVisible(false);
-    }
+
     ui->stackedWidget->setCurrentIndex(1);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -189,15 +189,9 @@ void MainWindow::on_actionCerrar_sesion_triggered()
 
 void MainWindow::on_actionVotante_triggered()
 {
-    if(ftP < QDate::currentDate()){
-        ui->toolBar_Votante->actions().at(1)->setVisible(false);
-    }
-    if(fV < QDate::currentDate()){
-        ui->toolBar_Votante->actions().at(2)->setVisible(false);
-    }
-    if(fV <= QDate::currentDate()){
-        ui->toolBar_Votante->actions().at(2)->setVisible(false);
-    }
+
+
+
     ui->stackedWidget->setCurrentIndex(5);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -361,9 +355,7 @@ void MainWindow::on_actionCerrar_sesion_2_triggered()
 
 void MainWindow::on_actionPartido_triggered()
 {
-    if(ftR < QDate::currentDate()){
-        ui->toolBar_Votante->actions().at(2)->setVisible(false);
-    }
+
     ui->stackedWidget->setCurrentIndex(8);
     ui->actionAdministrador->setCheckable(true);
 }
@@ -540,6 +532,20 @@ void MainWindow::on_pushButton_ingresar_clicked()
             ui->INE->setText(ine);
         }
         INEVotante=ine.toInt();
+
+        if(fiR <= QDate::currentDate()&& ftR >=QDate::currentDate()){
+            ui->toolBar_Admin->actions().at(3)->setVisible(true);
+            ui->toolBar_Partido->actions().at(1)->setVisible(true);
+        }
+        if(fiP <= QDate::currentDate()&& ftP >= QDate::currentDate()){
+            ui->toolBar_Votante->actions().at(1)->setVisible(true);
+        }
+        if(fV == QDate::currentDate()){
+            ui->toolBar_Votante->actions().at(2)->setVisible(true);
+        }
+        if( QDate::currentDate()>fV){
+            ui->toolBar_Votante->actions().at(3)->setVisible(true);
+        }
 
     }
 }
