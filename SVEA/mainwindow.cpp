@@ -18,7 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
     cambiarStacked(0);
     ui->lineEdit_contrasena->setEchoMode(QLineEdit::Password);
     db.setDatabaseName("qtSVEA");
-
+    Resultados r;
+    r.exec();
 
     if(!db.open()){
         QMessageBox::critical(this,"Error",db.lastError().text());
